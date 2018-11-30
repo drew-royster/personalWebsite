@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/google-analytics": "^2.0.2",
     "buttercms": "^1.1.2",
     "cross-env": "^5.2.0",
     "moment": "^2.22.2",
