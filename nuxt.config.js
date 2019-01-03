@@ -22,20 +22,6 @@ module.exports = {
     ]
   },
 
-  generate: {
-    routes: function () {
-      return butter.post.list({
-        page: 1,
-        page_size: 200,
-      })
-      .then((res) => {
-        return res.data.data.map((post) => {
-          return '/post/' + post.slug
-        })
-      })
-    }
-  },
-
   /*
   ** Customize the progress-bar color
   */

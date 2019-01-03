@@ -15,8 +15,13 @@
     "@nuxtjs/google-analytics": "^2.0.2",
     "buttercms": "^1.1.2",
     "cross-env": "^5.2.0",
+    "highlight.js": "^9.13.1",
     "moment": "^2.22.2",
     "nuxt": "^2.0.0",
+    "vue": "2.5.17",
+    "vue-code-highlight": "^0.7.0",
+    "vue-highlight-component": "^1.0.0",
+    "vue-server-renderer": "2.5.17",
     "vuetify": "^1.2.4"
   },
   "devDependencies": {
