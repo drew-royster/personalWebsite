@@ -1,9 +1,177 @@
 [
   {
-    "title": "Takeaways from Understanding Ecmascript 6 by Nicholas Zakas",
+    "title": "Takeaways from Understanding Ecmascript 6",
     "date": "01-02-2019",
     "preview": "I found this book to be very helpful...",
     "image": "conveyor-js.png",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Money - The least valuable currency",
+    "date": "12-12-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "The-Joker.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "The Speckled Greats Of The Past",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "mandela.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Cody Corrington",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "Cody.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Symbolic distinctions and how they are formed",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "hydra.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "The Faux Compassion of the Damned",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "damned.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "The opposite of Nazism",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "hitler.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Be hypermasculine and hyperfeminine",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "male-female.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "By their fruits ye shall know them",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "apple-picking.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Poetry Time - Free Will",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "river.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Pedophilia - Fear over tolerance",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "jack.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Co-Causality - Gaming the system",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "loops.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Pity isn't respect",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "pity-fool.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Ideas as viruses",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "virus.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Aphorisms",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "monastery.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Why do we hate feminine women and masculine men?",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "man.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Joyner Lucas' I\"m not racist\" takeaway",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "racism.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Deceit - Why it’s a big deal",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "deceit.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "The world is on a pendulum",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "pendulum.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Observations from Deray McKesson keynote",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "deray.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Stoicism basics",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "senecca.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "What the \"damned\" apostates want you to understand",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "zacchaeus.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Vaccines",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "vaccine.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Guns - An equalizer for women",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "woman-gun.jpg",
+    "page": "understanding-ecmascript6"
+  },
+  {
+    "title": "Universal Basic Income",
+    "date": "01-02-2019",
+    "preview": "I found this book to be very helpful...",
+    "image": "cost-production.png",
     "page": "understanding-ecmascript6"
   }
 ]

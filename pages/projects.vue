@@ -1,5 +1,29 @@
 <template>
-  <v-content>
+  <div>
+    <v-toolbar
+      dense
+      tabs
+      color="primary"
+    >
+      <v-toolbar-title class="pl-2 headline">
+        Projects
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-tabs
+        v-model="tabs"
+        color="transparent"
+        slider-color="white"
+        slot="extension"
+      >
+        <v-tab
+          v-for="tabsItem in tabsItems"
+          :key="tabsItem.id"
+          :to="tabsItem.link"
+        >
+          <span class="pl-2 pr-2">{{ tabsItem.title }}</span>
+        </v-tab>
+      </v-tabs>
+    </v-toolbar>
     <v-layout mt-3 row justify-center>
       <v-flex xs12 sm6 class="text-xs-center">
         <v-card light>
@@ -28,5 +52,5 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </v-content>
+  </div>
 </template>

@@ -3,10 +3,10 @@
     <v-layout mt-3 row justify-center>
       <v-flex xs12 sm8>
         <v-card>
-          <v-flex pa-3>
+          <v-flex pa-5>
             <v-img :src="getImage('conveyor-js.png')"></v-img>
             <v-flex mb-3>
-              <h1>Takeaways from Understanding Ecmascript 6 byfds Nicholas Zakas</h1>
+              <h1>Takeaways from Understanding Ecmascript 6 by Nicholas Zakas</h1>
             </v-flex>
             <v-card-text>
               <p>
