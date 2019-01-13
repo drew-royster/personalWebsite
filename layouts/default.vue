@@ -85,11 +85,6 @@ export default {
       fixed: false,
       analyticsItems: [
         {
-          icon: 'person',
-          title: 'About',
-          link: '/'
-        },
-        {
           icon: 'description',
           title: 'Blog',
           link: '/blog'

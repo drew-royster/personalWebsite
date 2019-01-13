@@ -6,9 +6,9 @@ Vue.prototype.$moment = moment;
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#FFC107',
-    accent: '#FFECB3',
-    secondary: '#FFCA28',
+    primary: '#3AA977',
+    accent: '#51AFE3',
+    secondary: '#85FEC6',
     info: '#FFF8E1',
     warning: '#FF9800',
     error: '#F44336',

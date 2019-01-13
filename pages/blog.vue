@@ -25,65 +25,71 @@
       </v-tabs>
     </v-toolbar>
     <v-container
-      grid-list-xl
       pa-0
       mb-5
       mt-5
+      fluid
+      grid-list-xl
     >
-      <v-layout wrap>
+      <v-layout row justify-center wrap>
         <v-flex
-        class="rounded-card"
           v-for="(post, i) in posts"
           :key="i"
           xs12
           md4
-          justify-space-around
+          mb-5
         >
-          <v-hover close-delay="20">
-            <v-card
-              :class="`elevation-${hover ? 2 : 8}`"
-              hover
-              height="290px"
-              color="secondary"
-              slot-scope="{ hover }"
-              :to="getPage(post.page)"
-            >
-              <div>
-                <v-img
-                :aspect-ratio="16/9"
-                :src="getImage(post.image)"
-              ></v-img>
-              </div>
-              <v-card-text
-                class="title"
+        <div>
+          <v-layout justify-center>
+
+            <v-hover close-delay="20">
+              <v-card
+                :class="`elevation-${hover ? 2 : 8}`"
+                hover
+                height="290px"
+                width="380px"
+                color="secondary"
+                slot-scope="{ hover }"
+                :to="getPage(post)"
               >
-                {{ post.title }}
-              </v-card-text>
-              <div class="height=50px primary text-xs-center ">
-              </div>
-              <v-fade-transition>
-                <v-card
-                  v-if="hover"
-                  class="text-xs-right"
-                  color="rgba(255, 224, 130, .55)"
-                  height="100%"
-                  style="position: absolute; top: 0;"
-                  width="100%"
+                <div>
+                  <v-img
+                  :aspect-ratio="16/9"
+                  :src="getImage(post.image)"
+                ></v-img>
+                </div>
+                <v-card-text
+                  class="title"
                 >
-                  <!-- <v-slide-x-transition appear>
-                    <v-btn
-                      class="subheading font-weight-light text-capitalize mx-0 mt-3"
-                      color="secondary"
-                      depressed
-                      large
-                    >
-                      Read More
-                    </v-btn>
-                  </v-slide-x-transition> -->
-                </v-card>
-              </v-fade-transition>
-            </v-card>
-          </v-hover>
+                  {{ post.title }}
+                </v-card-text>
+                <div class="height=50px primary text-xs-center ">
+                </div>
+                <v-fade-transition>
+                  <v-card
+                    v-if="hover"
+                    class="text-xs-right"
+                    color="rgba(112, 204, 255, .55)"
+                    height="100%"
+                    style="position: absolute; top: 0;"
+                    width="100%"
+                  >
+                    <!-- <v-slide-x-transition appear>
+                      <v-btn
+                        class="subheading font-weight-light text-capitalize mx-0 mt-3"
+                        color="secondary"
+                        depressed
+                        large
+                      >
+                        Read More
+                      </v-btn>
+                    </v-slide-x-transition> -->
+                  </v-card>
+                </v-fade-transition>
+              </v-card>
+            </v-hover>
+          </v-layout>
+        </div>
         </v-flex>
       </v-layout>
     </v-container>
@@ -109,15 +115,9 @@ export default {
     getImage(name) {
       return require(`@/assets/${name}`);
     },
-    getPage(page) {
-      return `/posts/${page}`;
+    getPage(post) {
+      return `/posts/${post.page}`;
     }
   }
 }
 </script>
-
-<style>
-  .rounded-card {
-    border-radius: 25px;
-  }
-</style>
