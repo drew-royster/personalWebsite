@@ -50,50 +50,70 @@
         History of vaccinations
         </h3>
         <p>
-        ”From Appolonius, true liberty, and unvariable steadfastness, and not to regard anything at all, though never so little, but right and reason: and always, whether in the sharpest pains, or after the loss of a child, or in long diseases, to be still the same man;” -Marcus Aurelius, Meditations
+        <a href="https://en.wikipedia.org/wiki/Edward_Jenner">Edward Jenner</a> is known as the "father of immunology".  Before his discovery, we helped prevent smallpox by inoculations which were much more risky.  He is widely regarded to have saved more lives than any other human being to have lived thus far.
         </p>
-        <p>
-        When I first read this, I mistakenly believed that this was an act of repression and would cause long lasting problems. I was wrong and think these definitions might be helpful.
-        </p>
-        <p>
-        <strong>Repression</strong> happens when you simply cannot deal with something, so your subconscious mind takes over for you and locks it away. It’s very common in cases of sexual abuse, when a child simply does not have the tools to handle what has happened. It can have profound effects on who you are and how you feel, without you even being able to recall them.
-        </p>
-        <p>
-        <strong>Suppression</strong> is different, because we are actively in control. It happens when a friend does something you don’t like and you swallow your frustration instead of picking a fight. You are in control. Being a conscious decision, should your friend continue to be a bother, you can act accordingly. Were it repression, you wouldn’t even know why you were upset to begin with.
-        </p>
-        <p>
-        Marcus is promoting the idea that suppression is good. When we temper sadness, anger, or even happiness, we can make decisions based on our principles rather than our feelings.
-        </p>
+        <h4>
+        Development of smallpox vaccine
+        </h4>
+         <ol>
+          <li>Jenner found that milkmaids rarely(if ever) got smallpox.</li>
+          <li>He noticed that they sometimes got pustules on their hands from cowpox that appeared similar to smallpox pustules.</li>
+          <li>He tested the theory by scraping pus from a cowpox infested milkmaid and infecting an 8 year old boy.</li>
+          <li>The boy was found to be immune to smallpox.</li>
+          <li>Through additional patients and tests, Jenner proved that a cowpox infection prevented smallpox.</li>
+        </ol>
+        <br>
         <h3>
-        Being the captain
+        History of anti-vax movement
         </h3>
         <p>
-        Most of us drift through life being carried to and fro by our emotions and never truly guide ourselves. We wait for happiness to hit us and we fear the next time sadness will strike. A true Stoic actively looks for things to find joy in. They don’t just temper their emotions when they are struck by them, but actively look to cultivate a grateful attitude.
+        <a href="https://en.wikipedia.org/wiki/Andrew_Wakefield">Andrew Wakefield</a> is widely regarded as the father of the anti-vax movement.  Most if not all of the controversy behind vaccines started after he and 12 colleagues posted a "study" they conducted in 1998.  It consisted of 12 patients.  Wakefield was linking MMR vaccinations to autism believing that it affected the gastrointestinal system which then caused autism.  Their study and publication in Lancet went viral and led to many parents deciding that vaccines were too dangerous.  Now many others have became anti-vax advocates making claims similar to Wakefield's.
         </p>
         <p>
-        "The hanging down of grapes—the brow of a lion, the froth of a foaming wild boar, and many other like things, though by themselves considered, they are far from any beauty, yet because they happen naturally, they both are comely, and delightful; so that if a man shall with a profound mind and apprehension, consider all things in the world, even among all those things which are but mere accessories and natural appendices as it were, there will scarce appear anything unto him, wherein he will not find matter of pleasure and delight." -Marcus Aurelius, Meditations
-        </p>
-        <p>
-        Another way to say this is “stop and smell the roses”. Don’t take things for granted, recultivate within yourself a childlike sense of wonder. You’ll find beauty in the ugliest things.
+        Wakefield continues to actively support the theory he pushed in 1998 and recently released the film <a href="http://vaxxedthemovie.com/">Vaxxed.</a>
         </p>
         <h3>
-        Being humble
+        Inconsistencies and problems
+        </h3>
+        <h4>
+        Original Study
+        </h4>
+         <ul>
+          <li>12/5,975,303,657 people is far too small of a sample to ever be considered statistically significant</li>
+          <li>A law firm was attempting to discredit the MMR vaccine at the time.  It was found that...
+            <ul>
+            <li>The children in his study were claimants in the lawsuit.</li>
+            <li>The firm contributed £3.4m to doctors and scientists with Wakefield receiving over £400,000.</li>
+            <li>Brian Deer, the journalist who uncovered these blatant conflicts of interest, was sued by Wakefield for libel twice.  Both times the case was thrown out and Wakefield was left responsible to pay for court fees.</li>
+            </ul>
+          </li>
+        </ul>
+        <br>
+        <h4>
+        Wakefield's tax statements
+        </h4>
+        <p>
+        Andrew Wakefield started the Strategic Autism Initiative in 2010.  It's goal was to...
+        </p>
+        <p>
+        SAI's mission is to promote research in the areas of autism and neurological disorders, in particular designing and commissioning research projects and setting strategic research priorities
+        </p>
+        <p>
+        The problem is that almost all of that money went into Wakefields pockets.  <a href="https://lbrbblog.files.wordpress.com/2014/11/sai-2012-form-990.pdf">Here</a> is his 2012 990 tax form as an example. <a href="https://leftbrainrightbrain.co.uk/2014/11/07/andrew-wakefield-paid-316k-to-administer-80k-in-grants-by-the-strategic-autism-inititiative/">Matt Carey</a> did a great analysis of this nonprofit finding that only $.13 of every dollar actually went towards research of any kind.
+        </p>
+        <h3>
+        Studies
         </h3>
         <p>
-        Where is the strength in an outstretched spring?
+        <a href="https://www.healthychildren.org/English/safety-prevention/immunizations/Pages/Vaccine-Studies-Examine-the-Evidence.aspx">Here</a> is a relatively exhaustive list on the studies done so far relating to vaccines. None so far have found a link.  A few studies have attempted to show a link, but these were later <a href="http://www.popularmechanics.com/science/health/a4998/4345610/">discredited.</a>
         </p>
+        <h3>
+        My take
+        </h3>
         <p>
-        There is none.
+        Even though autism rates have risen, we do not yet know the reason and it has been proven time and time again that vaccines aren't behind it.  Wasting all of our resources restudying vaccines isn't helping anyone and may actually be hurting us.  Viruses such measles, mumps, and even smallpox are still around.  Herd immunity is what protects our young children who have not yet been vaccinated.  Were that to be compromised, we would have a real problem on our hands.  This <a href="https://www.reddit.com/r/TwoXChromosomes/comments/5na3ry/please_please_please_god_vaccinate_your_kids/?st=IXT098HW&sh=223479bd">heartbreaking post</a> on reddit is one of the reasons I felt the need to investigate this issue.  Believe what you will, but I beg all to be open to thoroughly reading the research that has been done on this issue.
         </p>
-        <p>
-        Likewise, there is no greatness in a self-aggrandizing man.
-        </p>
-        <p>
-        For a time they may fool those around them, but one day others will say to each other “this man is not all he believes himself to be”. This man had no self-esteem and will proceed to lose the esteem of those around him.
-        </p>
-        <p>
-        “A man without ever the least appearance of anger, or any other passion; able at the same time most exactly to observe the Stoic Apathia, or unpassionateness, and yet to be most tender-hearted: ever of good credit; and yet almost without any noise, or rumour: very learned, and yet making little show.” -Marcus Aurelieus, Meditations
-        </p>
+
         </v-flex>
       </v-flex>
     </v-layout>

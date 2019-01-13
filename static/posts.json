@@ -158,20 +158,20 @@
     "date": "01-02-2019",
     "preview": "I found this book to be very helpful...",
     "image": "vaccine.jpg",
-    "page": "understanding-ecmascript6"
+    "page": "vaccines"
   },
   {
     "title": "Guns - An equalizer for women",
     "date": "01-02-2019",
     "preview": "I found this book to be very helpful...",
     "image": "woman-gun.jpg",
-    "page": "understanding-ecmascript6"
+    "page": "guns-women"
   },
   {
     "title": "Universal Basic Income",
     "date": "01-02-2019",
     "preview": "I found this book to be very helpful...",
     "image": "cost-production.png",
-    "page": "understanding-ecmascript6"
+    "page": "ubi"
   }
 ]
