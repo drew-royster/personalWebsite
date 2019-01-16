@@ -1,171 +1,123 @@
 <template>
-<div>
- <v-toolbar
-    dense
-    tabs
-    color="primary"
-  >
-    <v-toolbar-title class="pl-2 headline">
-      Me
-    </v-toolbar-title>
-    <v-spacer></v-spacer>
-    <v-tabs
-      v-model="tabs"
-      color="transparent"
-      slider-color="white"
-      slot="extension"
+  <div>
+    <v-toolbar
+      dense
+      tabs
+      color="primary"
     >
-      <v-tab
-        v-for="tabsItem in tabsItems"
-        :key="tabsItem.id"
-        :to="tabsItem.link"
+      <v-toolbar-title class="pl-2 headline">
+        Blog
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-tabs
+        v-model="tabs"
+        color="transparent"
+        slider-color="white"
+        slot="extension"
       >
-        <span class="pl-2 pr-2">{{ tabsItem.title }}</span>
-      </v-tab>
-    </v-tabs>
-  </v-toolbar>
-
-  <v-container
-      grid-list-xl
+        <v-tab
+          v-for="tabsItem in tabsItems"
+          :key="tabsItem.id"
+          :to="tabsItem.link"
+        >
+          <span class="pl-2 pr-2">{{ tabsItem.title }}</span>
+        </v-tab>
+      </v-tabs>
+    </v-toolbar>
+    <v-container
       pa-0
       mb-5
+      mt-5
+      fluid
+      grid-list-xl
     >
-    <v-layout justify-space-around row>
-      <v-flex xs12 md2 mt-4>
-        <v-card>
-          fsf
-        </v-card>
-      </v-flex>
-      <v-flex xs12 md6>     
-       <material-card class="v-card-profile">
-          <v-avatar
-            slot="offset"
-            class="mx-auto d-block"
-            size="200"
-          >
-            <img
-              :src="drew_face"
-            >
-          </v-avatar>
-          <v-card-text class="text-xs-center">
-            <h1>Drew Royster</h1>
-            <p class="card-description font-weight-light">I don't believe in domain specific knowledge. If you cant' relate two seemingly unrelated fields such as botany and software engineering, then you probably don't understand either. I look for truth everywhere and aim to be useful wherever I find myself.</p>
-          </v-card-text>
-        </material-card>
-      </v-flex>
-      <v-flex xs12 md2 mt-4>
-        <v-card
-        color="secondary"
-      >
-        <v-card-title>
-          <v-icon
-            large
-            left
-          >
-            library_books
-          </v-icon>
-          <span class="title font-weight-light">Books</span>
-        </v-card-title>
-        <v-expansion-panel inset>
-          <v-expansion-panel-content
-            v-for="(item,i) in 6"
-            :key="i"
-          >
-            <div slot="header">Item</div>
-            <v-card>
-              <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
-            </v-card>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-    </v-card>
-      </v-flex>
-    </v-layout>
-    <v-layout row xs12 sm12 mt-3>
-      <v-flex>
-        <v-card primary>
-          <v-card-text>
-            <v-layout row>
-              <v-flex class="text-xs-center">
-                <h1 class="display-3 font-weight-thin">Technical Skills</h1>
-              </v-flex>
-            </v-layout>
-            <v-layout 
-              v-for="skill in skills"
-              :key="skill.name"
-              mt-3
-              align-center
-              justify-center
+      <v-layout row justify-center wrap>
+        <v-flex
+          v-for="(post, i) in posts"
+          :key="i"
+          xs12
+          md4
+          mb-5
+        >
+        <div>
+          <v-layout justify-center>
+
+            <v-hover close-delay="20">
+              <v-card
+                :class="`elevation-${hover ? 2 : 8}`"
+                hover
+                height="290px"
+                width="380px"
+                color="secondary"
+                slot-scope="{ hover }"
+                :to="getPage(post)"
               >
-              <v-flex xs12 sm6 class="text-xs-center">
-                <v-layout column>
-                  <v-layout row>
-                    <h1 class="display-2 font-weight-thin">{{ skill.name }}</h1>
-                  </v-layout>
-                  <v-layout row>
-                    <v-flex>
-                      <v-progress-linear v-model="skill.percent"></v-progress-linear>
-                    </v-flex>
-                  </v-layout>
-                </v-layout>
-              </v-flex>
-            </v-layout>
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
-</div>
+                <div>
+                  <v-img
+                  :aspect-ratio="16/9"
+                  :src="getImage(post.image)"
+                ></v-img>
+                </div>
+                <v-card-text
+                  class="title"
+                >
+                  {{ post.title }}
+                </v-card-text>
+                <div class="height=50px primary text-xs-center ">
+                </div>
+                <v-fade-transition>
+                  <v-card
+                    v-if="hover"
+                    class="text-xs-right"
+                    color="rgba(112, 204, 255, .55)"
+                    height="100%"
+                    style="position: absolute; top: 0;"
+                    width="100%"
+                  >
+                    <!-- <v-slide-x-transition appear>
+                      <v-btn
+                        class="subheading font-weight-light text-capitalize mx-0 mt-3"
+                        color="secondary"
+                        depressed
+                        large
+                      >
+                        Read More
+                      </v-btn>
+                    </v-slide-x-transition> -->
+                  </v-card>
+                </v-fade-transition>
+              </v-card>
+            </v-hover>
+          </v-layout>
+        </div>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script>
-
+const posts = require('@/static/posts.json');
 export default {
-  name: 'index',
-  computed: {
-    drew_face: function() {
-      return require('@/assets/drew-looking-up.jpeg');
+  name: 'blog-home',
+  data() {
+    return {
+      posts,
+      tabs: null,
+      tabsItems: [
+          {id: 1, title: 'All', link: ''},
+          // {id: 2, title: 'Tech', link: ''},
+          // {id: 3, title: 'Life', link: ''}
+      ]
     }
   },
-  data () {
-    return {
-      tabs: null,
-      tabsItems: [],
-      skills: [
-        {
-          name: 'Javascript',
-          percent: 80
-        },
-        {
-          name: 'Docker',
-          percent: 75
-        },
-        {
-          name: 'Vue',
-          percent: 75
-        },
-        {
-          name: 'NodeJS',
-          percent: 70
-        },
-        {
-          name: 'Electron',
-          percent: 70
-        },
-        {
-          name: 'Selenium',
-          percent: 70
-        },
-      ]
+  methods: {
+    getImage(name) {
+      return require(`@/assets/${name}`);
+    },
+    getPage(post) {
+      return `/posts/${post.page}`;
     }
   }
 }
 </script>
-
-<style>
-  .profile-card {
-    z-index: 0;
-  }
-  .my-profile-image {
-    z-index: 1;
-  }
-</style>

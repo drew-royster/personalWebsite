@@ -1,13 +1,30 @@
 <template>
     <v-app>
+        <v-menu offset-y class="accent hidden-md-and-up">
+          <v-btn
+            icon
+            slot="activator"
+          >
+          <v-icon>menu</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile
+              v-for="(page, index) in pages"
+              :key="index"
+              :to="page.link"
+            >
+              <v-list-tile-title>{{ page.title }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
         <v-navigation-drawer
-                width="250"
-                color="secondary"
-                persistent
-                :mini-variant="miniVariant"
-                v-model="drawer"
-                fixed
-                app
+          width="250"
+          class="accent hidden-xs"
+          persistent
+          :mini-variant="miniVariant"
+          v-model="drawer"
+          fixed
+          app
         >
             <v-container v-if="!miniVariant"  justify-center align-content-center>
                 <v-layout column>
@@ -29,7 +46,7 @@
             </v-container>
 
             <v-list subheader :class="{'list-border-bottom' : miniVariant}">
-                <template v-for="item in analyticsItems">
+                <template v-for="item in pages">
                     <v-tooltip right :disabled="!miniVariant">
                         <v-list-tile
                           :key="item.icon"
@@ -72,7 +89,14 @@
 
 <script>
 export default {
-  name: 'VuebaseLayout',
+  name: 'Index',
+  metaInfo: {
+    title: 'Drew Royster', // set a title
+    htmlAttrs: {
+      lang: 'en',
+      amp: undefined // "amp" has no value
+    }
+  },
   computed: {
     drew_face: function() {
       return require('@/assets/drew-looking.jpeg');
@@ -83,11 +107,11 @@ export default {
       appName: process.env.VUE_APP_APP_NAME,
       drawer: true,
       fixed: false,
-      analyticsItems: [
+      pages: [
         {
           icon: 'description',
           title: 'Blog',
-          link: '/blog'
+          link: '/'
         },
         {
           icon: 'build',

@@ -24,7 +24,7 @@
         </v-tab>
       </v-tabs>
     </v-toolbar>
-    <v-layout mt-3 row justify-center id="wrapper">
+    <v-layout mt-5 row justify-center id="wrapper">
       <v-flex xs12 sm6 class="text-xs-center">
         <v-card light>
           <v-card-text>
