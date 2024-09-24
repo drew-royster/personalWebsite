@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -28,7 +28,7 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    
+
     # Deployment steps
     - name: Deploy to GitHub Pages
       if: ${{ github.ref == 'refs/heads/master' }} # Only deploy when pushing to master branch
@@ -36,7 +36,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist # Directory that contains your built project
-        # Optional: If you want to keep the history of deployments, 
+        # Optional: If you want to keep the history of deployments,
         # you might want to set this
         enable_jekyll: false
         # Optional: If you need to configure user information for the git commit
