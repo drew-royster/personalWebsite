@@ -7,10 +7,10 @@ export const metadata = {
   title: {
     template: '%s - Drew Royster',
     default:
-      'Drew Royster - Full stack software engineer and llm enthusiast',
+      'Drew Royster - Full stack software developer and ai engineer',
   },
   description:
-    'I’m Drew, a full stack software engineer and llm enthusiast. I help people enter this new world of ai guided user experiences and build models that work!',
+    'I’m Drew, a full stack software developer and ai engineer. I help people enter this new world of ai guided user experiences and build models that work!',
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,

@@ -20,34 +20,20 @@ export const metadata = {
 
 export default (props) => <ArticleLayout article={article} {...props} />
 
-Staffing and recruiting companies are currently consigned to simple boolean searches on LinkedIn and going off of tags. My partner Zach Martin at [https://shaolin.ai](Shaolin AI) and I thought we can do so much better. And we did.
-
+Staffing and recruiting companies are currently consigned to simple boolean searches on LinkedIn and going off of tags. [Newfounding](https://newfounding.com) asked us to help solve this problem. My partner Zach Martin at [Shaolin AI](https://shaolin.ai) and I agreed and created this tool.
 ## The goal
-
 We wanted our users to be able to find a great match for a given search just through a natural language search. **I need a programmer in austin texas** should be enough to find you a programmer in that location. No messing with tags, geo filters, or anything else. You should type what you want and you get it.
-
 ##  Ingestion
-
 We had a private dataset with `docx` and `pdf` resumes and some bios. We had to build out an ingestion pipeline for this to create vector embeddings for each member in their group. We opted out of chunking, because we wanted a vectorized search query to map 1 to 1 with a user. The results were pretty great without chunking so it never became a need. We did have an llm summarize the resume and bio before the embedding step to make sure we fit in the embedding context window. The whole ingestion pipeline looked like this.
-
 <Image src={ingestion} alt="Ingestion"/>
-
 ## Search
-
 Once the data is ingested it allows for simple natural language searches like this.
-
 <Image src={searchEmpty} alt="Empty Search"/>
-
 <Image src={search} alt="Search"/>
-
 ## Search Details
-
 That powerful and simple user experience has a lengthy setup process to make it feel as good and be as simple and useful as it is. Here are the technical details.
-
 <Image src={searchTechnical} alt="Search Technical Details"/>
-
 ## End result
-
 Our tool was able to find candidates that previously would have needed to be hand matched across many thousands of members. What was hours of work became seconds.
 <Testimonial />
 
