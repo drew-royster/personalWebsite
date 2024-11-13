@@ -13,7 +13,7 @@ export const metadata = {
     'I’m Drew, a full stack software developer and ai engineer. I help people enter this new world of ai guided user experiences and build models that work!',
   alternates: {
     types: {
-      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
+      'application/rss+xml': `https://drewroyster.com/feed.xml`,
     },
   },
 }
