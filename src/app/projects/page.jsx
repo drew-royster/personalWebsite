@@ -2,47 +2,44 @@ import Image from 'next/image'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoShaolin from '@/images/logos/shaolin.svg'
+import logoTheAnon from '@/images/logos/theanon.png'
+import lightningLogo from '@/images/logos/lightning.svg'
+import cfsLogo from '@/images/logos/cfs.png'
+
 
 const projects = [
   {
-    name: 'Planetaria',
+    name: 'Shaolin AI',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-    logo: logoPlanetaria,
+      'Helped build a bootcamp and some projects since then.',
+    link: { href: 'https://shaolin.ai', label: 'shaolin.ai' },
+    backgroundColor: "bg-white",
+    logo: logoShaolin,
   },
   {
-    name: 'Animaginary',
+    name: 'The Anon',
     description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoAnimaginary,
+      'Staffing Search Application which allows you to find users with natural language searches.',
+    link: { href: '/articles/staff-search-rag-function-calling', label: 'article' },
+    backgroundColor: "bg-black",
+    logo: logoTheAnon,
   },
   {
-    name: 'HelioStream',
+    name: 'Smart Autofill',
     description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
+        'Chrome extension that uses your personal identity and llms to fill out forms for you. Work in progress.',
+    link: { href: 'https://github.com/drew-royster/smart-autofill-extension', label: 'smart-autofill' },
+    backgroundColor: "bg-white",
+    logo: lightningLogo,
   },
   {
-    name: 'cosmOS',
+    name: 'Canvas File Sync',
     description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
-  },
-  {
-    name: 'OpenShuttle',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
+        'Electron app I built in college. Google drive sync for Canvas course files.',
+    link: { href: 'https://github.com/drew-royster/canvasFileSync', label: 'canvas-file-sync' },
+    backgroundColor: "bg-white",
+    logo: cfsLogo,
   },
 ]
 
@@ -59,14 +56,14 @@ function LinkIcon(props) {
 
 export const metadata = {
   title: 'Projects',
-  description: 'Things I’ve made trying to put my dent in the universe.',
+  description: 'Projects I have worked on. My humble contribution to the weights which will devour us.',
 }
 
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Things I’ve made trying to put my dent in the universe."
-      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+      title="Projects I have worked on. My humble contribution to the weights which will devour us."
+      intro="Some active, some dead, but all part of my growth to where I am."
     >
       <ul
         role="list"
@@ -74,7 +71,7 @@ export default function Projects() {
       >
         {projects.map((project) => (
           <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <div className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 ${project.backgroundColor} `}>
               <Image
                 src={project.logo}
                 alt=""
