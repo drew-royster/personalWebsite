@@ -1,25 +1,38 @@
-import { ArticleLayout } from '@/components/ArticleLayout'
+import {ArticleLayout} from '@/components/ArticleLayout'
 import search from './search.png'
 import searchEmpty from './search_empty.png'
+import ingestion from './ingestion.png'
 
 export const article = {
-  author: 'Drew Royster',
-  date: '2024-11-12',
-  title: 'Staffing Search Tool - RAG/Function Calling',
-  description:
-    'Transformers brought us more than just large language models, they created a ton of new ways to build applications. Here is an example of one powerful use case.',
+    author: 'Drew Royster',
+    date: '2024-11-12',
+    title: 'Staffing Search Tool - RAG/Function Calling',
+    description:
+        'Transformers brought us more than just large language models, they created a ton of new ways to build applications. Here is an example of one powerful use case.',
 }
 
 export const metadata = {
-  title: article.title,
-  description: article.description,
+    title: article.title,
+    description: article.description,
 }
 
 export default (props) => <ArticleLayout article={article} {...props} />
 
-Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.
+Staffing and recruiting companies are currently consigned to simple boolean searches on linkedin and going off of tags. My partner Zach Martin at [https://shaolin.ai](Shaolin AI) and I thought we can do so much better. And we did.
 
-<Image src={searchEmpty} alt="Empty Search" />
+## The goal
+
+We wanted our users to be able to find a great match for a given search just through a natural language search. **I need a programmer in austin texas** should be enough to find you a programmer in that location. No messing with tags, geo filters, or anything else. You should type what you want and you get it.
+
+##  Ingestion
+
+We had a private dataset with `docx` and `pdf` resumes and some bios. We had to build out an ingestion pipeline for this to create vector embeddings for each member in their group. We opted out of chunking, because we wanted a vectorized search query to map 1 to 1 with a user. The results were pretty great without chunking so it never became a need. We did have an llm summarize the resume and bio before the embedding step to make sure we fit in the embedding context window. The whole ingestion pipeline looked like this.
+
+<Image src={ingestion} alt="Ingestion"/>
+
+## Search
+
+<Image src={searchEmpty} alt="Empty Search"/>
 
 I knew that to get it right I was going to have to replicate the viewing conditions of someone from the future, so I grabbed my space helmet from the closet, created a new Figma document, and got to work.
 
