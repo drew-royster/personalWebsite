@@ -24,7 +24,7 @@ function Tool({ title, href, children }) {
 }
 
 export const metadata = {
-  title: 'Gems',
+  title: 'Recommendations',
   description: 'Software I use, gadgets I love, and other things I recommend.',
 }
 
