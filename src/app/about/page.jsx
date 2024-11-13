@@ -65,21 +65,21 @@ export default function About() {
                             I thought it was magic and really wanted to use it, but my family was on AT&T and it was a
                             T-Mobile exclusive. That led to me learning how to
                             break into the phone and modify the APN (access point networks) to use T-Mobile when it
-                            wasn't supposed to. That led me to Cyanogenmod and a lot of modding with custom firmware.
+                            wasn&#39;t supposed to. That led me to Cyanogenmod and a lot of modding with custom firmware.
                         </p>
                         <p>
-                            Since then I've gotten a broad amount of experience from huge companies like Intel to a lot
+                            Since then I&#39;ve gotten a broad amount of experience from huge companies like Intel to a lot
                             of small startups
-                            where I wear a lot of hats. I'm a full stack developer who knows a lot about platforms,
+                            where I wear a lot of hats. I&#39;m a full stack developer who knows a lot about platforms,
                             databases, and the web.
-                            Lately I've been working a lot with machine learning and am thoroughly convinced that the
+                            Lately I&#39;ve been working a lot with machine learning and am thoroughly convinced that the
                             future will be a blend of these stochastic models and deterministic software.
                             For the first time software is able to meet us halfway instead of us needing to learn it in
                             detail, it can comprehend our intentions and act accordingly.
-                            We haven't really fully grasped how it'll change the market.
+                            We haven&#39;t really fully grasped how it&#39;ll change the market.
                         </p>
                         <p>
-                            I've gotten quite familiar and good with building these hybrid systems (called agents, but
+                            I&#39;ve gotten quite familiar and good with building these hybrid systems (called agents, but
                             hate that word). If you need help or wanna hire me to build anything out just shoot me an
                             email.
                         </p>
