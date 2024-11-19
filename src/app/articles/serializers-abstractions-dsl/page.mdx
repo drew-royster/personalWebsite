@@ -1,0 +1,174 @@
+import {ArticleLayout} from '@/components/ArticleLayout'
+
+export const article = {
+    author: 'Drew Royster',
+    date: '2024-11-18',
+    title: 'LLMs - Serializers, Abstractions and Domain Specific Languages',
+    description:
+        'Shortly after large language models became ubiquitous, developers clamored for abstractions. They yearned for simplicity before they understood the basics.',
+}
+
+export const metadata = {
+    title: article.title,
+    description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Shortly after large language models became ubiquitous, developers clamored for abstractions. They yearned for simplicity before they understood the basics.
+
+## History
+
+Before the transformer we had the recurrent neural net, it only looked backwards, but it was enough to fairly reliably predict the next word. Apple put it to good use in iPhones. We are now using transformers which are bidirectional and context aware, but they are still doing the same thing, predicting the next token. That's what an Large Language Model does no matter the architecture, it simply predicts the next token.
+
+## Function calling, tools and other abstractions
+
+To help empower builders players like Open AI created a concept of `tools` the marketing buzz is that the llm can now use tools to accomplish whatever goals you give it and to the user it does look and work like that, but it's important to remember that a model is not **doing** anything here, but predicting tokens. Open AI simply trained the models to predict a predetermined sequence of tokens and if that occurs then openai will execute some code on your behalf.
+
+They essentially built convenient serializers for us to use, but they did not fundamentally change how these systems work.
+
+Open AI made this more explicit with their new [Structured Outputs API](https://platform.openai.com/docs/guides/structured-outputs), which is validating the output with a schema on every generated token, but it has proven to be quite slow, in many cases the other players like Instructor work better than the Open AI built in tool.
+
+## Alternatives
+
+Players like [BAML](https://github.com/BoundaryML/baml) have caught my eye, because they're trying new clever things to solve the serialization problem. They are using [levenshtein distance algorithms](https://en.wikipedia.org/wiki/Levenshtein_distance) to fix json serialization issues that an llm might mess up on. This is much faster than asking an llm to fix json issues, but I wonder if they've gone far enough.
+
+## My proposal
+
+LLM's are extremely flexible in their outputs, but they will make mistakes. That's simply a feature of their nature, I don't think we will solve that soon. I view the problem as one where every token outputted is potentially wrong so the more compact you can make the format the better off you will be. It's also simply unnecessary to use json in structured outputs.
+
+### Immediate suggestions
+
+There's a lot of already existing formats that are potentially better for your needs. Here's a few.
+
+* `enum` - just output a string. This would be especially useful in a routing agent. You can use few shot prompting with [Symbol Tuning](https://arxiv.org/pdf/2305.08298) to get good results here.
+* `.env` - key value pairs. `variable=value`. No quotes required. Flat structure, simple. Useful for extracting data.
+* `.csv` - comma (or other delimiter) separated values. No quotes required. Useful for arrays that aren't nested.
+* `json` - use for complex nested data. Very powerful, but lots of what I would call noise tokens.
+
+### Long term
+
+Domain Specific Languages (formats) with custom serializers can help bridge the gap. Experimentation will be huge here. We don't need to figure out the best generic structured output format, we can simply solve the immediate problem each time by coming up with what works best. With synthetic data we can measure and figure out what format works best for a given goal.
+
+Here's an example
+
+```python
+[
+       {
+           "role": "system",
+           "content": """Given a user's resume extract the user's information into this format. There can be many of each field.
+           ~name~<skill>^address^$phone$*employer*
+           """
+       },
+       {
+           "role": "user",
+           "content": """Drew Royster
+Full stack engineer with broad experience including in AI/ML
+
+- Phone: 385-219-9177
+- Email: drew.royster@gmail.com
+
+EXPERIENCE
+
+Shaolin AI, Remote (Part Time) — ML Engineer
+August 2023 - PRESENT
+
+- Architected and developed the data ingestion and inference pipeline for our Group Networking Application, which allows users to find members of a group by embeddings of their key characteristics. It also allows filtering by location within the search in natural language. For example, users can search “I need an AI Engineer in Utah” and get results near that location with embeddings similar to “AI Engineer”.
+- Deployed all services locally leveraging open-source embedding and inference models. Accessible through CloudFront. Stack VUE 3, python, docker, unraid, pgvector
+
+Insidesales, Springville UT — Software Engineer Intern
+May 2016 - June 2017
+
+- Maintained and built out new features to our monitoring solution using Python, Nagios, AWS, Docker, Grafana, and InfluxDB.
+
+Microfocus (Formerly Novell), Springville UT — QA Engineer Intern
+May 2015 - June 2016
+
+- Built out hundreds of automated tests using Java, Selenium and TestNG.
+
+Intel, Folsom CA — Technical Marketing Engineer Intern
+May 2014 - June 2014
+
+- Assisted the technical marketing team in developing automated demo systems which were used globally. We used autoit to automate interactions that lean on CPU utilization to demonstrate intel's capabilities.
+
+SKILLS
+
+- Javascript
+- MongoDB
+- PostgreSQL
+   """
+},
+{
+   "role": "assistant",
+   "content": "~Drew Royster~<MongoDB><Javascript><PostgreSQL>$385-219-9177$*Shaolin AI**Insidesales**Microfocus**Intel*"
+},
+{
+   "role": "user",
+   "content": """**Emily J. Smith**
+
+**Contact Information:**
+
+* Email: [emily.smith@email.com](mailto:emily.smith@email.com)
+* Phone: (555) 123-4567
+* LinkedIn: linkedin.com/in/emilyjsmith
+* Address: 123 Main St, Apt 4, New York, NY 10001
+
+**Summary:**
+
+Highly motivated and detail-oriented marketing professional with 5+ years
+of experience in digital marketing, project management, and team
+leadership. Proven track record of driving business growth through
+data-driven strategies and creative campaigns.
+
+**Work Experience:**
+
+**Senior Marketing Manager**, GreenTech Inc. (2020-Present)
+
+* Led a team of 3 marketers to launch a successful rebranding campaign for
+the company's flagship product
+* Developed and executed a comprehensive marketing strategy that resulted
+in a 25% increase in sales within 6 months
+* Collaborated with cross-functional teams, including sales, product, and
+customer success, to drive business growth
+
+**Marketing Coordinator**, StartUp Hub (2018-2020)
+
+* Managed social media campaigns across multiple platforms, resulting in a
+50% increase in followers
+* Assisted in the development of marketing materials, including brochures,
+flyers, and email campaigns
+* Coordinated events and activations to promote brand awareness and engage
+with target audience
+
+**Education:**
+
+* **Bachelor's Degree in Marketing**, University of Michigan (2018)
+
+**Skills:**
+
+* Digital marketing (paid social, email, search engine optimization)
+* Project management (Agile, Waterfall)
+* Team leadership and collaboration
+* Data analysis (Google Analytics, Excel)
+* Content creation (writing, video production)
+
+**Certifications:**
+
+* **HubSpot Inbound Marketing Certification**
+* **Google Analytics Certification**
+
+**Achievements:**
+
+* Winner of the 2020 StartUp Hub Marketing Award for Best Campaign
+* Featured speaker at the 2019 Women in Marketing Conference
+"""
+       }
+   ]
+```
+outputs (llama 3.2 3b:Q4 - not powerful model)
+`~Emily J. Smith~<Digital marketing><Project management><Team leadership>$ (555) 123-4567$*Senior Marketing Manager**Marketing Coordinator**University of Michigan*HubSpot Inbound Marketing CertificationGoogle Analytics Certification*`
+
+### Conclusion
+
+While it's obvious why json was the first choice for structured outputs, I think we should think much more broadly about how best to coerce the stochastic outputs of llms into discrete formats. This is a new frontier and we shouldn't be limiting ourselves based on legacy requirements.
+
