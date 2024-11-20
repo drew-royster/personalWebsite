@@ -1,0 +1,77 @@
+import {ArticleLayout} from '@/components/ArticleLayout'
+import sea from './sea.jpg'
+
+export const article = {
+    author: 'Drew Royster',
+    date: '2024-11-19',
+    title: 'Few shot prompting beats prompt engineering',
+    description:
+        'A ton of hacks have blown up to try to get better outputs, but the answer was in front of us all along.',
+}
+
+export const metadata = {
+    title: article.title,
+    description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+When people hear about prompt engineering they think of all the hacks. People have created exploits to bypass safety mechanisms such as DAN (do anything now). Other less nefarious actors have gotten decent results offering tips to the llm or threatening to kill yourself if they don't output proper json format, but we don't have to live like this.
+
+## Clumsy attempts
+Even companies where you would expect them to be serious like Apple are trying cheap hacks like "do not hallucinate."
+
+Important to remember that all a large language model ever does is hallucinate, the pathway is exactly the same, it's not retrieving information, it's pulling probabilities.
+
+<Image src={sea} alt="Sailing into vector space" />
+You need to think of crafting your prompts as steering the model into the vector space where you are most likely to get the correct outcome. Signal-to-noise ratio is very important here.
+
+## More reliable approaches
+Sometimes threats and promises can help a little bit, but it's really marginal when you compare it with the other methods that are available. Providing a few examples is markedly more effective than spending hours tweaking words to get slighter better performance.
+
+Let's say you wanted a large language model to classify the sentiment of a product review. You could make a system prompt like this.
+
+```json
+[
+  {
+    "role":  "system",
+    "content": "Analyze the sentiment of a product review. Give it a rating from 1 to 5. Please please please try to detect sarcasm and rate it accordingly."
+  }
+]
+```
+
+Or you could try something like this
+```json
+[
+  {
+    "role":  "system",
+    "content": "Analyze the sentiment of a product review. Give it a rating from 1 to 5"
+  },
+  {
+    "role": "user",
+    "content": "This hair brush is awesome! I bought it for my mom and she cannot stop talking about it."
+  },
+  {
+    "role": "assistant",
+    "content": "5"
+  },
+  {
+    "role": "user",
+    "content": "This toilet seat was great. I especially loved when it came loose and I fell in very refreshing 10/10!"
+  },
+  {
+    "role": "assistant",
+    "content": "1"
+  },
+  {
+    "role": "user",
+    "content": "Decent hammer, not the sturdiest but not the most expensive. Definitely not my favorite but a solid pick."
+  },
+  {
+    "role": "assistant",
+    "content": "3"
+  }
+]
+```
+
+Not only are the results often better with this method, but it's also just easier to work with. Just like onboarding a new employee it's easier to show examples than it is to try to paint the proper picture with a lecture. You can think of few shot prompting as the precursor to fine tuning.
