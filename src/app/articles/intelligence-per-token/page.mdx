@@ -1,0 +1,33 @@
+import {ArticleLayout} from '@/components/ArticleLayout'
+import dream from './steer-dream.png'
+
+export const article = {
+    author: 'Drew Royster',
+    date: '2025-03-01',
+    title: 'How to think about intelligence',
+    description:
+        'Now that intelligence has become a commodity, how should we think about it?',
+}
+
+export const metadata = {
+    title: article.title,
+    description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<Image src={dream} alt="Steer Dream"/>
+
+The GPT 4.5 release was underwhelming for many people. It’s slow, expensive and reasoning models have already unlocked much of what we would want a smarter model for. I still think it was significant because it very well might be the biggest model ever created which will have unique characteristics that might not be obvious. The way transformer based llms work is through auto regression. Each generated token is fed back into the model to ensure the next token has the context of the previous token. Those tokens then bounce through a ton of simulated neural connections before creating an output token.
+
+A while back people discovered that through prompting you can get “reasoning” although a clumsier form than how a human might reason. They call that _test time compute_, but I think it’s easier to think of it as steering a dream into the right vector space for the correct answer to be given. Tokens are just mappings in vector space after all so making a model think out loud before responding can shift us into the right space to predict the correct tokens. What makes o3 mini an interesting model is that it’s clearly smaller than gpt-4o, but you can get better responses. So per token generated there is less intelligence, but by generating a ton of tokens at prompt time you can actually outcompete the “smarter” model.
+
+What makes gpt 4.5 interesting is that it’s probably the smartest model per token which means it can be relied upon more for helping train and steer smaller models. The biggest unlock with it is the fact that they greatly reduced hallucinations. It would be prohibitively expensive for most people, but if you added reasoning to 4.5 it would crush everything else, because the intelligence per token is higher than anywhere else.
+
+We have a couple of different ways to think about models:
+
+_Intelligence per token_ - useful for creativity, because monkeys banging on keyboards can’t write shakespeare it takes a certain mind
+
+_Intelligence per response_ - useful for problems that can be broken down into smaller pieces. Could an average mind build a bridge given enough time? It probably could
+
+_Intelligence per second_ - useful for latency sensitive applications like voice agents. You can sometimes spend your way out of this, but not always since the best models are hidden behind APIs. You couldn’t run GPT 4.5 on better hardware at any price.
