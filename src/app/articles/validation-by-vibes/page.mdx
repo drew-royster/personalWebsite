@@ -1,0 +1,55 @@
+import {ArticleLayout} from '@/components/ArticleLayout'
+import lucy from './love-lucy.png'
+import bread from './bread-research.png'
+
+export const article = {
+    author: 'Drew Royster',
+    date: '2025-09-04',
+    title: 'Validation by Vibes',
+    description:
+        'You have heard of vibe coding, but what about vibe validation?',
+}
+
+export const metadata = {
+    title: article.title,
+    description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<Image src={lucy} alt="I love Lucy Chocolate Factory"/>
+
+If you care about the quality of your work so called "vibe coding" can feel like being Lucy at the chocolate factory. The sheer volume of code you can generate is at times overwhelming.
+
+Claude code and recently Codex (cloud and cli versions) are incredibly good. With parallel agents you can generate _huge_ amounts of code with them in no time at all. It will compile almost every time and generally be at least syntactically correct. When it comes to complicated features though creating "correct" code and creating the code that _you_ wanted are two very different things.
+
+Giving up control and trusting the agent more and more is much easier if you start with the end in mind.
+
+## Planning around verifiable expectations
+
+Some features are very small and easy to one shot, but for bigger ones I think a more thoughtful approach would help create transparency. Here's an example process to try.
+
+1. Chat with AI to create user stories that the feature needs to satisfy. Save those into a markdown file.
+2. From the user stories create test examples, but not in code. It should be pseudocode in a markdown file.
+3. Create a spec based on the user stories and test examples. Be very careful about this part since you don't want the agent to have room to make incorrect assumptions.
+4. Finally ask it to write the code and test it step by step.
+5. Once the feature and tests are done, refer back to the user stories and test examples and ask the agent, in a fresh context, to verify that the code meets the specs _independently_ of the code or tests that were written.
+
+
+## Inspecting the results
+
+After the code is written and tested we have a rough idea that the feature is correct, but for major changes that's likely not enough. We can do more than just review the code, we can ask the agent to create artifacts describing the change.
+
+A great example of this is the _Infographic_ export option on Google Gemini Deep Research results.  You could read the giant wall of text with your results or you could read a well structured webpage that visually breaks things down in a much easier to understand way.
+
+Here's an example of one I did looking for a bread maker.
+
+<Image src={bread} alt="Bread Research"/>
+
+_A whole lot more fun to read than a wall of text._
+
+A code reviewer will not want to read 10k lines of "ai slop", but they will happily review an infographic highlighting the changes.
+
+The important thing to remember as we make this transition is that intelligence is a commodity now and we can leverage it to get different perspectives on the work we do collaboratively with agents. The reports, charts and graphs that scrappy startups never had time to make are a simple prompt away.
+
+In this way we can get a birds eye view of the work that we, through our agents, are doing. The choice isn't between writing code by hand or blindly trusting the agent, we can build visibility into the work we are doing.
