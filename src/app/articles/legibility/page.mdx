@@ -1,4 +1,6 @@
 import {ArticleLayout} from '@/components/ArticleLayout'
+import ZeusPegasus from './zeus_pegasus.jpg'
+
 
 export const article = {
     author: 'Drew Royster',
@@ -15,7 +17,9 @@ export const metadata = {
 
 export default (props) => <ArticleLayout article={article} {...props} />
 
-<i>You don't know what you don't know</i> and I'd add that you often don't know what you know either.
+<Image src={ZeusPegasus} alt="Zeus molding pegasus"/>
+
+<i>You don't know what you don't know</i> and I'd add that you often don't know what you do know either.
 
 This becomes a real problem when trying to describe to an agent what you'd like it to do on your behalf. It feels almost like our brains take into consideration the context of who we are speaking to by default when talking to humans, but I'm not sure how well that maps to creating agents. It's hard to mentally model an llm. They know almost everything about the world and yet nothing about what is on your desk, who you just talked to and what you've been doing on the other tab in Chrome. Bridging that gap requires making your problem, your perceived solution and the entire relevant domain legible to the model. Legibility here means taking your fuzzy implicit understanding and converting it into a sufficiently comppressed, but detailed representation such that a model can act upon it reliably.
 
