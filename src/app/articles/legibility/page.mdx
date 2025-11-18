@@ -1,0 +1,32 @@
+import {ArticleLayout} from '@/components/ArticleLayout'
+
+export const article = {
+    author: 'Drew Royster',
+    date: '2025-11-17',
+    title: 'Legibility',
+    description:
+        'You know things (allegedly) how can you make your agent know them too.',
+}
+
+export const metadata = {
+    title: article.title,
+    description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<i>You don't know what you don't know</i> and I'd add that you often don't know what you know either.
+
+This becomes a real problem when trying to describe to an agent what you'd like it to do on your behalf. It feels almost like our brains take into consideration the context of who we are speaking to by default when talking to humans, but I'm not sure how well that maps to creating agents. It's hard to mentally model an llm. They know almost everything about the world and yet nothing about what is on your desk, who you just talked to and what you've been doing on the other tab in Chrome. Bridging that gap requires making your problem, your perceived solution and the entire relevant domain legible to the model. Legibility here means taking your fuzzy implicit understanding and converting it into a sufficiently comppressed, but detailed representation such that a model can act upon it reliably.
+
+There are some easy ways to do this without doing all the mental labor yourself. You can invert the relationship with an llm by explaining very roughly your goal and then asking it to interview you about it. You'd be surprised how well this works, you can end by having it generate a prompt for you and then read and refine it.
+
+After your initial prompt is built and your agent is running you can create personas and have them talk to your agent. You'd be surprised how much you can improve your agent by running some simple scenarios against it. 
+
+An example would be to create a customer service agent for The Tire Boys with a detailed prompt about tires and what the agent can and cannot do. Then you come up with 5 personas of people likely to come into a tire shop. Mom with kids, contractor with big truck, big rig driver, etc. You build an agent to adopt those personas and role play as them. Then you wire them to each other and watch them talk. What this does is externalize your assumptions by putting them to the test through simulation. 
+
+If you have access to the raw data you could always feed transcripts of how customer service agents currently handle calls and then ask a model to go through them all and come up with a prompt to mirror their behavior.
+
+There are a lot of ways to go about it, but the main thing to understand is that you need to make the problem space legible before it can become solvable. Us humans operate on an ocean of implicit knowledge which we need to make explicit before we can hand it off to an agent.
+
+A model’s latent space is enormous. Legibility is the act of collapsing that space—reducing ambiguity until the model is operating inside the narrow slice where correct outputs are the natural consequence.
