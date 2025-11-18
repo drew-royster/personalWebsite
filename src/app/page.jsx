@@ -203,7 +203,7 @@ export default async function Home() {
             Full stack software developer and ai engineer
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Drew, a full stack software developer and ai engineer. I help people enter this new world of ai guided user experiences and build models that work!
+            I’m Drew, a full stack software developer and ai engineer. I help people enter this new world of ai guided user experiences and build agents that work!
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
