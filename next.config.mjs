@@ -5,6 +5,14 @@ import remarkGfm from 'remark-gfm'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.pdf$/,
+      type: 'asset/resource',
+    })
+
+    return config
+  },
   experimental: {
     outputFileTracingIncludes: {
       '/articles/*': ['./src/app/articles/**/*.mdx'],

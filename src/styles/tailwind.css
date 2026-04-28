@@ -2,3 +2,215 @@
 @import 'tailwindcss/components';
 @import './prism.css';
 @import 'tailwindcss/utilities';
+
+@layer utilities {
+  @keyframes photo-drift {
+    0% {
+      transform: translate3d(-1.5rem, 0, 0);
+    }
+    100% {
+      transform: translate3d(1.5rem, 0, 0);
+    }
+  }
+
+  @keyframes slow-orbit {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes signal-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scaleX(0.92);
+    }
+    50% {
+      opacity: 0.75;
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes panel-sweep {
+    0% {
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+    18% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateX(120%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes phosphor-shimmer {
+    0% {
+      background-position: 0 0;
+      opacity: 0.035;
+    }
+    50% {
+      opacity: 0.08;
+    }
+    100% {
+      background-position: 0 12px;
+      opacity: 0.04;
+    }
+  }
+
+  .photo-drift {
+    animation: photo-drift 12s ease-in-out infinite alternate;
+  }
+
+  .slow-orbit {
+    animation: slow-orbit 38s linear infinite;
+  }
+
+  .signal-pulse {
+    animation: signal-pulse 3.8s ease-in-out infinite;
+    transform-origin: left center;
+  }
+
+  .spaceage-panel {
+    background:
+      linear-gradient(135deg, rgba(255, 244, 214, 0.08), rgba(47, 211, 198, 0.04)),
+      rgba(31, 23, 15, 0.74);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 244, 214, 0.08),
+      0 24px 80px rgba(0, 0, 0, 0.28);
+  }
+
+  .retro-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .retro-card > :not(.retro-corners):not(.phosphor-status) {
+    position: relative;
+    z-index: 2;
+  }
+
+  .retro-card::before,
+  .retro-card::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 300ms ease, transform 300ms ease;
+  }
+
+  .retro-card::before {
+    background:
+      linear-gradient(rgba(104, 255, 237, 0.035) 50%, transparent 50%),
+      radial-gradient(circle at 16% 0%, rgba(255, 217, 145, 0.08), transparent 26%),
+      radial-gradient(circle at 100% 100%, rgba(104, 255, 237, 0.07), transparent 32%);
+    background-size: 100% 4px, auto, auto;
+  }
+
+  .retro-card::after {
+    border: 1px solid rgba(104, 255, 237, 0.14);
+    border-radius: inherit;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 221, 155, 0.035),
+      inset 0 0 18px rgba(104, 255, 237, 0.035),
+      0 0 22px rgba(104, 255, 237, 0.04);
+  }
+
+  .retro-card:hover::before,
+  .retro-card:focus-within::before {
+    animation: phosphor-shimmer 1800ms linear infinite;
+    opacity: 1;
+  }
+
+  .retro-card:hover::after,
+  .retro-card:focus-within::after {
+    opacity: 1;
+  }
+
+  .retro-card:hover,
+  .retro-card:focus-within {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 244, 214, 0.1),
+      inset 0 0 24px rgba(104, 255, 237, 0.025),
+      0 28px 90px rgba(0, 0, 0, 0.32),
+      0 0 24px rgba(104, 255, 237, 0.035);
+  }
+
+  .retro-corners {
+    pointer-events: none;
+    position: absolute;
+    inset: 0.9rem;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  .retro-card:hover .retro-corners,
+  .retro-card:focus-within .retro-corners {
+    opacity: 1;
+  }
+
+  .retro-corners::before,
+  .retro-corners::after {
+    content: '';
+    position: absolute;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-color: rgba(104, 255, 237, 0.5);
+  }
+
+  .retro-corners::before {
+    left: 0;
+    top: 0;
+    border-left-width: 1px;
+    border-top-width: 1px;
+  }
+
+  .retro-corners::after {
+    right: 0;
+    bottom: 0;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+  }
+
+  .phosphor-status {
+    pointer-events: none;
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    z-index: 3;
+    height: 0.34rem;
+    width: 0.34rem;
+    border-radius: 9999px;
+    background: rgba(255, 220, 143, 0.72);
+    box-shadow:
+      0 0 0 0 rgba(255, 220, 143, 0),
+      0 0 0 rgba(104, 255, 237, 0);
+    opacity: 0;
+    transition: opacity 280ms ease, box-shadow 280ms ease;
+  }
+
+  .retro-card:hover .phosphor-status,
+  .retro-card:focus-within .phosphor-status {
+    opacity: 1;
+    box-shadow:
+      0 0 0 3px rgba(255, 220, 143, 0.045),
+      0 0 12px rgba(255, 220, 143, 0.24),
+      0 0 20px rgba(104, 255, 237, 0.08);
+  }
+
+  .spaceage-grid {
+    background-image:
+      linear-gradient(rgba(255, 213, 128, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(70, 229, 216, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 72%);
+  }
+}

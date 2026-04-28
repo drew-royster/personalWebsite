@@ -9,11 +9,11 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from '@/components/SocialIcons'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
+import image1 from '@/images/photos/retro/agent-ears.jpg'
+import image2 from '@/images/photos/retro/machine-hands.jpg'
+import image3 from '@/images/photos/retro/memory-archive.jpg'
+import image4 from '@/images/photos/retro/speech-to-action.jpg'
+import image5 from '@/images/photos/retro/radio-builder.jpg'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
@@ -76,9 +76,20 @@ function ArrowDownIcon(props) {
   )
 }
 
-function Article({ article }) {
+function Article({ article, index }) {
   return (
-    <Card as="article">
+    <Card
+      as="article"
+      className="retro-card spaceage-panel rounded-lg border border-amber-200/15 p-6 transition duration-300 hover:-translate-y-1 hover:border-teal-300/45"
+    >
+      <span className="retro-corners" />
+      <span className="phosphor-status" />
+      <div className="mb-8 flex items-center justify-between">
+        <span className="text-xs font-medium uppercase tracking-[0.24em] text-teal-200/80">
+          note {String(index + 1).padStart(2, '0')}
+        </span>
+        <span className="h-px w-16 bg-gradient-to-r from-teal-300/70 to-transparent" />
+      </div>
       <Card.Title href={`/articles/${article.slug}`}>
         {article.title}
       </Card.Title>
@@ -94,7 +105,7 @@ function Article({ article }) {
 function SocialLink({ icon: Icon, ...props }) {
   return (
     <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+      <Icon className="h-6 w-6 fill-amber-100/60 transition group-hover:fill-teal-300" />
     </Link>
   )
 }
@@ -169,13 +180,14 @@ function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
   return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+    <div className="mt-14 sm:mt-20">
+      <div className="-my-4 overflow-hidden border-y border-amber-200/10 bg-[linear-gradient(90deg,rgba(255,232,178,0.06),rgba(47,211,198,0.04),rgba(255,232,178,0.06))] py-8">
+        <div className="photo-drift flex justify-center gap-5 sm:gap-8">
         {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
+              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-lg bg-[#211910] shadow-2xl shadow-black/30 ring-1 ring-amber-200/20 transition duration-500 hover:-translate-y-2 hover:rotate-0 sm:w-72',
               rotations[imageIndex % rotations.length],
             )}
           >
@@ -187,50 +199,168 @@ function Photos() {
             />
           </div>
         ))}
+        </div>
       </div>
     </div>
   )
 }
+
+const focusAreas = [
+  'voice agents',
+  'speech workflows',
+  'tool use',
+  'agent memory',
+  'software that acts',
+]
+
+const principles = [
+  {
+    title: 'Listen',
+    label: '01',
+    description:
+      'Speech interfaces, transcripts, turn-taking, and the product details that make voice feel natural instead of ornamental.',
+  },
+  {
+    title: 'Remember',
+    label: '02',
+    description:
+      'Context and memory systems that help agents carry useful history without turning every interaction into a junk drawer.',
+  },
+  {
+    title: 'Act',
+    label: '03',
+    description:
+      'Tool calls, callbacks, automations, and workflows that move voice AI from impressive conversation into useful software.',
+  },
+]
 
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
   return (
     <>
-      <Container className="mt-9">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Full stack software developer and ai engineer
-          </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Drew, a full stack software developer and ai engineer. I help people enter this new world of ai guided user experiences and build agents that work!
-          </p>
-          <div className="mt-6 flex gap-6">
-            <SocialLink
-              href="https://www.github.com/drew-royster"
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              href="https://www.linkedin.com/in/drew-royster/"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
-            />
+      <Container className="mt-8 sm:mt-12">
+        <section className="relative grid items-end gap-12 overflow-hidden rounded-[1.5rem] border border-amber-200/10 bg-[#1b130d]/45 p-5 shadow-2xl shadow-black/20 sm:p-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(360px,0.96fr)] lg:p-10">
+          <div className="spaceage-grid pointer-events-none absolute inset-0 opacity-70" />
+          <div className="slow-orbit pointer-events-none absolute -right-48 -top-64 h-[42rem] w-[42rem] rounded-full border border-teal-200/10" />
+          <div className="slow-orbit pointer-events-none absolute -right-36 -top-52 h-[34rem] w-[34rem] rounded-full border border-amber-200/10 [animation-duration:52s]" />
+          <div className="relative z-10 max-w-3xl">
+            <p className="text-sm font-medium uppercase tracking-[0.24em] text-teal-300">
+              Voice-first AI systems
+            </p>
+            <h1 className="mt-5 text-6xl font-bold tracking-tight text-amber-50 sm:text-8xl">
+              Ears for agents.
+              <span className="block text-amber-200/60">
+                Hands for machines.
+              </span>
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-amber-100/75">
+              I’m Drew Royster. I build voice-first AI systems for the space
+              between speech, agents, tools, and real-world action.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {focusAreas.map((area) => (
+                <span
+                  key={area}
+                  className="rounded-full border border-amber-200/15 bg-amber-100/[0.03] px-3 py-1 text-sm text-amber-100/70"
+                >
+                  {area}
+                </span>
+              ))}
+            </div>
+            <div className="mt-9 flex items-center gap-6">
+              <Link
+                href="/projects"
+                className="rounded-full bg-amber-200 px-5 py-2.5 text-sm font-semibold text-[#21170f] shadow-lg shadow-amber-950/20 transition hover:-translate-y-0.5 hover:bg-amber-100"
+              >
+                See the work
+              </Link>
+              <div className="flex gap-5">
+                <SocialLink
+                  href="https://www.github.com/drew-royster"
+                  aria-label="Follow on GitHub"
+                  icon={GitHubIcon}
+                />
+                <SocialLink
+                  href="https://www.linkedin.com/in/drew-royster/"
+                  aria-label="Follow on LinkedIn"
+                  icon={LinkedInIcon}
+                />
+              </div>
+            </div>
           </div>
-        </div>
+          <div className="relative z-10 mx-auto w-full max-w-md lg:mx-0 lg:ml-auto">
+            <div className="absolute -inset-4 rounded-[1.25rem] border border-teal-300/15" />
+            <div className="absolute -inset-8 rounded-full bg-teal-300/10 blur-3xl" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-[#211910] shadow-2xl shadow-black/40 ring-1 ring-amber-200/20">
+              <Image
+                src={image4}
+                alt=""
+                sizes="(min-width: 1024px) 28rem, 100vw"
+                className="absolute inset-0 h-full w-full object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#120f0b]/50 via-transparent to-transparent" />
+              <div className="signal-pulse absolute left-6 right-6 top-7 h-px bg-gradient-to-r from-transparent via-teal-200 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 border-t border-amber-200/15 bg-[#120f0b]/70 px-5 py-4 backdrop-blur">
+                <p className="text-xs font-medium uppercase tracking-[0.22em] text-teal-200">
+                  spoken intent
+                </p>
+                <p className="mt-1 text-sm text-amber-100/80">
+                  routed into tools, memory, and useful action
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </Container>
       <Photos />
-      <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
+      <Container className="mt-20 md:mt-24">
+        <div className="grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
+          {principles.map((principle) => (
+            <div
+              key={principle.title}
+              className="retro-card spaceage-panel rounded-lg border border-amber-200/15 p-7 transition duration-300 hover:-translate-y-1 hover:border-teal-300/45"
+            >
+              <span className="retro-corners" />
+              <span className="phosphor-status" />
+              <div className="mb-6 flex items-center justify-between">
+                <h2 className="text-base font-semibold text-amber-50">
+                  {principle.title}
+                </h2>
+                <span className="rounded-full border border-teal-300/25 px-2.5 py-1 text-xs text-teal-200">
+                  {principle.label}
+                </span>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-amber-100/70">
+                {principle.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Container>
+      <Container className="mt-20 md:mt-24">
+        <div className="relative overflow-hidden rounded-[1.25rem] border border-amber-200/10 bg-[#15100b]/70 p-5 sm:p-8">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-200/35 to-transparent" />
+          <div className="mb-10 grid gap-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(280px,0.28fr)] lg:items-end">
+            <div className="max-w-2xl">
+              <p className="text-sm font-medium uppercase tracking-[0.2em] text-teal-300">
+                Field notes
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-amber-50 sm:text-4xl">
+                Writing from the edge of voice, agents, and useful software.
+              </h2>
+            </div>
+            <p className="text-sm leading-6 text-amber-100/55">
+              Essays, experiments, and working notes from the place where speech
+              turns into tools.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+            {articles.map((article, index) => (
+              <Article key={article.slug} article={article} index={index} />
             ))}
           </div>
-          {/*<div className="space-y-10 lg:pl-16 xl:pl-24">*/}
-            {/*<Newsletter />*/}
-            {/*<Resume />*/}
-          {/*</div>*/}
         </div>
       </Container>
     </>

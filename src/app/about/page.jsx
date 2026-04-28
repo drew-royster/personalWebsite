@@ -14,9 +14,9 @@ function SocialLink({className, href, children, icon: Icon}) {
         <li className={clsx(className, 'flex')}>
             <Link
                 href={href}
-                className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+                className="group flex text-sm font-medium text-amber-100/75 transition hover:text-teal-300"
             >
-                <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500"/>
+                <Icon className="h-6 w-6 flex-none fill-amber-100/50 transition group-hover:fill-teal-300"/>
                 <span className="ml-4">{children}</span>
             </Link>
         </li>
@@ -50,15 +50,15 @@ export default function About() {
                             src={portraitImage}
                             alt=""
                             sizes="(min-width: 1024px) 32rem, 20rem"
-                            className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+                            className="aspect-square rotate-3 rounded-lg bg-[#211910] object-cover shadow-2xl shadow-black/30 ring-1 ring-amber-200/15"
                         />
                     </div>
                 </div>
                 <div className="lg:order-first lg:row-span-2">
-                    <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+                    <h1 className="text-4xl font-bold tracking-tight text-amber-50 sm:text-5xl">
                         I’m Drew Royster. I live in Utah and I solve hard problems with great code.
                     </h1>
-                    <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+                    <div className="mt-6 space-y-7 text-base leading-7 text-amber-100/70">
                         <p>
                             One of my earliest exposures to coding in any capacity was when I was in high school and the
                             first Android phone was released.
@@ -97,7 +97,7 @@ export default function About() {
                         <SocialLink
                             href="mailto:drew.royster@gmail.com"
                             icon={MailIcon}
-                            className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+                            className="mt-8 border-t border-amber-200/10 pt-8"
                         >
                             drew.royster@gmail.com
                         </SocialLink>
