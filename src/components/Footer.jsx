@@ -1,13 +1,16 @@
 import Link from 'next/link'
 
-import { ContainerInner, ContainerOuter } from '@/components/Container'
+const footerLinks = [
+  ['About', '/about'],
+  ['Projects', '/projects'],
+  ['Articles', '/articles'],
+  ['Talks', '/appearances'],
+  ['Uses', '/recommendations'],
+]
 
-function NavLink({ href, children }) {
+function FooterLink({ href, children }) {
   return (
-    <Link
-      href={href}
-      className="transition hover:text-teal-300"
-    >
+    <Link href={href} className="transition hover:text-cream">
       {children}
     </Link>
   )
@@ -15,25 +18,24 @@ function NavLink({ href, children }) {
 
 export function Footer() {
   return (
-    <footer className="mt-32 flex-none">
-      <ContainerOuter>
-        <div className="border-t border-amber-200/10 pb-16 pt-10">
-          <ContainerInner>
-            <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-amber-100/70">
-                <NavLink href="/about">About</NavLink>
-                <NavLink href="/projects">Projects</NavLink>
-                <NavLink href="/appearances">Appearances</NavLink>
-                <NavLink href="/recommendations">Recommendations</NavLink>
-              </div>
-              <p className="text-sm text-amber-100/40">
-                &copy; {new Date().getFullYear()} Drew Royster. All rights
-                reserved.
-              </p>
-            </div>
-          </ContainerInner>
+    <footer className="mx-auto mt-24 w-full max-w-7xl flex-none px-7 pb-7 sm:px-8 lg:px-8">
+      <div className="dossier-frame bg-black/40">
+        <div className="grid divide-y divide-cream/14 text-sm uppercase text-cream/56 sm:grid-cols-[1.2fr_repeat(2,0.9fr)] sm:divide-x sm:divide-y-0">
+          <div className="px-4 py-4 text-cream/72">
+            Drew Royster <span className="text-cream/36">v2026</span>
+          </div>
+          <nav className="flex flex-wrap gap-x-5 gap-y-2 px-4 py-4">
+            {footerLinks.map(([label, href]) => (
+              <FooterLink key={href} href={href}>
+                {label}
+              </FooterLink>
+            ))}
+          </nav>
+          <div className="px-4 py-4 text-cream/42">
+            Built in Utah · {new Date().getFullYear()}
+          </div>
         </div>
-      </ContainerOuter>
+      </div>
     </footer>
   )
 }

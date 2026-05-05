@@ -1,99 +1,87 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
+import cfsLogo from '@/images/logos/cfs.png'
+import lightningLogo from '@/images/logos/lightning.svg'
 import logoShaolin from '@/images/logos/shaolin.svg'
 import logoTheAnon from '@/images/logos/theanon.png'
-import lightningLogo from '@/images/logos/lightning.svg'
-import cfsLogo from '@/images/logos/cfs.png'
-
 
 const projects = [
   {
     name: 'Shaolin AI',
     description:
-      'Helped build a bootcamp and some projects since then.',
+      'Helped build an AI bootcamp and applied projects around agents, function calling, and practical model workflows.',
     link: { href: 'https://shaolin.ai', label: 'shaolin.ai' },
-    backgroundColor: "bg-white",
+    backgroundColor: 'bg-cream',
     logo: logoShaolin,
   },
   {
     name: 'The Anon',
     description:
-      'Staffing Search Application which allows you to find users with natural language searches.',
-    link: { href: '/articles/staff-search-rag-function-calling', label: 'article' },
-    backgroundColor: "bg-black",
+      'Staffing search application that lets operators find people with natural-language search over structured and unstructured data.',
+    link: { href: '/articles/staff-search-rag-function-calling', label: 'case note' },
+    backgroundColor: 'bg-black',
     logo: logoTheAnon,
   },
   {
     name: 'Smart Autofill',
     description:
-        'Chrome extension that uses your personal identity and llms to fill out forms for you. Work in progress.',
-    link: { href: 'https://github.com/drew-royster/smart-autofill-extension', label: 'smart-autofill' },
-    backgroundColor: "bg-white",
+      'Chrome extension experiment that uses personal context and LLMs to fill out forms with less manual repetition.',
+    link: { href: 'https://github.com/drew-royster/smart-autofill-extension', label: 'github' },
+    backgroundColor: 'bg-cream',
     logo: lightningLogo,
   },
   {
     name: 'Canvas File Sync',
     description:
-        'Electron app I built in college. Google drive sync for Canvas course files.',
-    link: { href: 'https://github.com/drew-royster/canvasFileSync', label: 'canvas-file-sync' },
-    backgroundColor: "bg-white",
+      'Electron app from college that synced Canvas course files into Google Drive before the ecosystem made that easy.',
+    link: { href: 'https://github.com/drew-royster/canvasFileSync', label: 'github' },
+    backgroundColor: 'bg-cream',
     logo: cfsLogo,
   },
 ]
 
-function LinkIcon(props) {
+function Project({ project, index }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
-        fill="currentColor"
-      />
-    </svg>
+    <li className="border-t border-cream/18 p-4 transition hover:bg-cream/[0.035] sm:p-5 sm:border-l sm:[&:nth-child(-n+2)]:border-t-0 lg:[&:nth-child(-n+4)]:border-t-0">
+      <Link href={project.link.href} className="group block">
+        <div className="flex items-start justify-between gap-4">
+          <div
+            className={`flex h-12 w-12 items-center justify-center border border-cream/18 ${project.backgroundColor}`}
+          >
+            <Image src={project.logo} alt="" className="h-8 w-8" unoptimized />
+          </div>
+          <span className="small-label text-xs text-cream/36">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+        </div>
+        <h2 className="mt-6 text-xl font-semibold text-cream">{project.name}</h2>
+        <p className="mt-3 text-sm leading-6 text-cream/62">
+          {project.description}
+        </p>
+        <p className="small-label mt-6 text-xs text-brass transition group-hover:text-cream">
+          {project.link.label}
+        </p>
+      </Link>
+    </li>
   )
 }
 
 export const metadata = {
   title: 'Projects',
-  description: 'Projects I have worked on. My humble contribution to the weights which will devour us.',
+  description: 'Projects and systems Drew Royster has worked on.',
 }
 
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Projects I have worked on. My humble contribution to the weights which will devour us."
-      intro="Some active, some dead, but all part of my growth to where I am."
+      title="Projects and systems I have worked on."
+      intro="Some are active, some are old, but they show the direction: useful AI, search, automation, and tools that connect to real work."
     >
-      <ul
-        role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {projects.map((project) => (
-          <Card
-            as="li"
-            key={project.name}
-            className="retro-card rounded-lg border border-amber-200/10 bg-[#18130e]/60 p-6 shadow-xl shadow-black/10 transition duration-300 hover:-translate-y-1 hover:border-teal-300/45"
-          >
-            <span className="retro-corners" />
-            <span className="phosphor-status" />
-            <div className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full shadow-md shadow-black/20 ring-1 ring-amber-200/20 ${project.backgroundColor} `}>
-              <Image
-                src={project.logo}
-                alt=""
-                className="h-8 w-8"
-                unoptimized
-              />
-            </div>
-            <h2 className="mt-6 text-base font-semibold text-amber-50">
-              <Card.Link href={project.link.href}>{project.name}</Card.Link>
-            </h2>
-            <Card.Description>{project.description}</Card.Description>
-            <p className="relative z-10 mt-6 flex text-sm font-medium text-amber-100/50 transition group-hover:text-teal-300">
-              <LinkIcon className="h-6 w-6 flex-none" />
-              <span className="ml-2">{project.link.label}</span>
-            </p>
-          </Card>
+      <ul role="list" className="grid border-b border-cream/18 sm:grid-cols-2 lg:grid-cols-4">
+        {projects.map((project, index) => (
+          <Project key={project.name} project={project} index={index} />
         ))}
       </ul>
     </SimpleLayout>

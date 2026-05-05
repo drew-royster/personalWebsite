@@ -1,20 +1,24 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useTheme } from 'next-themes'
 import {
   Popover,
-  PopoverButton,
   PopoverBackdrop,
+  PopoverButton,
   PopoverPanel,
 } from '@headlessui/react'
 import clsx from 'clsx'
 
-import { Container } from '@/components/Container'
-import avatarImage from '@/images/avatar.jpg'
+import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
+
+const navItems = [
+  ['About', '/about'],
+  ['Articles', '/articles'],
+  ['Projects', '/projects'],
+  ['Talks', '/appearances'],
+  ['Uses', '/recommendations'],
+]
 
 function CloseIcon(props) {
   return (
@@ -31,93 +35,108 @@ function CloseIcon(props) {
   )
 }
 
-function ChevronDownIcon(props) {
-  return (
-    <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
-      <path
-        d="M1.75 1.75 4 4.25l2.25-2.5"
-        fill="none"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function SunIcon(props) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z" />
-      <path
-        d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061"
-        fill="none"
-      />
-    </svg>
-  )
-}
-
-function MoonIcon(props) {
+function MenuIcon(props) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
-        d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
+        d="M5 7h14M5 12h14M5 17h14"
+        fill="none"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
     </svg>
   )
 }
 
-function MobileNavItem({ href, children }) {
+function Wordmark({ className }) {
   return (
-    <li>
-      <PopoverButton as={Link} href={href} className="block py-2">
-        {children}
-      </PopoverButton>
-    </li>
+    <Link
+      href="/"
+      aria-label="Drew Royster home"
+      className={clsx(
+        'font-display block text-3xl leading-[0.86] text-cream transition hover:text-white sm:text-4xl',
+        className,
+      )}
+    >
+      <span className="block">DREW</span>
+      <span className="block">ROYSTER</span>
+    </Link>
   )
 }
 
-function MobileNavigation(props) {
+function NavLink({ href, children, className }) {
+  let pathname = usePathname()
+  let isActive = pathname === href
+
   return (
-    <Popover {...props}>
-      <PopoverButton className="group flex items-center rounded-full bg-[#1d1711]/90 px-4 py-2 text-sm font-medium text-amber-100 shadow-lg shadow-black/20 ring-1 ring-amber-200/20 backdrop-blur transition hover:ring-amber-200/40">
-        Menu
-        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-amber-300/70 group-hover:stroke-amber-200" />
-      </PopoverButton>
+    <Link
+      href={href}
+      className={clsx(
+        'nav-cell flex min-h-16 items-center px-4 py-3 text-sm uppercase text-cream/64 transition hover:bg-cream/[0.035] hover:text-cream',
+        isActive && 'bg-cream/[0.055] text-cream',
+        className,
+      )}
+    >
+      {children}
+    </Link>
+  )
+}
+
+function SocialLink({ href, label, icon: Icon }) {
+  return (
+    <Link
+      href={href}
+      aria-label={label}
+      className="inline-flex h-8 w-8 items-center justify-center border border-cream/14 text-cream/58 transition hover:border-cream/40 hover:text-cream"
+    >
+      <Icon className="h-4 w-4 fill-current" />
+    </Link>
+  )
+}
+
+function MobileNavigation() {
+  return (
+    <Popover>
+      <div className="flex items-center">
+        <PopoverButton
+          aria-label="Open menu"
+          className="inline-flex h-10 w-10 items-center justify-center border border-cream/20 bg-black/20 text-cream/80 transition hover:border-cream/45 hover:text-cream"
+        >
+          <MenuIcon className="h-5 w-5" />
+        </PopoverButton>
+      </div>
       <PopoverBackdrop
         transition
-        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm duration-150 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in"
+        className="fixed inset-0 z-50 bg-black/70 duration-150 data-[closed]:opacity-0"
       />
       <PopoverPanel
         focus
         transition
-        className="fixed inset-x-4 top-8 z-50 origin-top rounded-2xl bg-[#1d1711] p-8 ring-1 ring-amber-200/20 duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in"
+        className="fixed inset-x-7 top-7 z-50 border border-cream/25 bg-ink p-0 text-cream shadow-2xl shadow-black/40 duration-150 data-[closed]:scale-95 data-[closed]:opacity-0"
       >
-        <div className="flex flex-row-reverse items-center justify-between">
-          <PopoverButton aria-label="Close menu" className="-m-1 p-1">
-            <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
+        <div className="flex items-start justify-between border-b border-cream/18 p-4">
+          <Wordmark className="text-3xl" />
+          <PopoverButton
+            aria-label="Close menu"
+            className="inline-flex h-10 w-10 items-center justify-center border border-cream/20 text-cream/70"
+          >
+            <CloseIcon className="h-5 w-5" />
           </PopoverButton>
-          <h2 className="text-sm font-medium text-amber-100/70">
-            Navigation
-          </h2>
         </div>
-        <nav className="mt-6">
-          <ul className="-my-2 divide-y divide-amber-200/10 text-base text-amber-50">
-            <MobileNavItem href="/about">About</MobileNavItem>
-            <MobileNavItem href="/articles">Articles</MobileNavItem>
-            <MobileNavItem href="/projects">Projects</MobileNavItem>
-            <MobileNavItem href="/appearances">Appearances</MobileNavItem>
-            <MobileNavItem href="/recommendations">Recommendations</MobileNavItem>
+        <nav>
+          <ul className="divide-y divide-cream/14">
+            {navItems.map(([label, href]) => (
+              <li key={href}>
+                <PopoverButton
+                  as={Link}
+                  href={href}
+                  className="block px-4 py-4 text-sm uppercase text-cream/78 transition hover:bg-cream/[0.04] hover:text-cream"
+                >
+                  {label}
+                </PopoverButton>
+              </li>
+            ))}
           </ul>
         </nav>
       </PopoverPanel>
@@ -125,297 +144,47 @@ function MobileNavigation(props) {
   )
 }
 
-function NavItem({ href, children }) {
-  let isActive = usePathname() === href
-
-  return (
-    <li>
-      <Link
-        href={href}
-        className={clsx(
-          'relative block px-3 py-2 transition',
-          isActive
-            ? 'text-teal-300'
-            : 'text-amber-100/80 hover:text-teal-300',
-        )}
-      >
-        {children}
-        {isActive && (
-          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-300/0 via-teal-300/70 to-teal-300/0" />
-        )}
-      </Link>
-    </li>
-  )
-}
-
-function DesktopNavigation(props) {
-  return (
-    <nav {...props}>
-      <ul className="flex rounded-full bg-[#1d1711]/85 px-3 text-sm font-medium shadow-lg shadow-black/20 ring-1 ring-amber-200/20 backdrop-blur">
-        <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Articles</NavItem>
-        <NavItem href="/projects">Projects</NavItem>
-        <NavItem href="/appearances">Appearances</NavItem>
-        <NavItem href="/recommendations">Recommendations</NavItem>
-      </ul>
-    </nav>
-  )
-}
-
-function ThemeToggle() {
-  let { resolvedTheme, setTheme } = useTheme()
-  let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
-  let [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  return (
-    <button
-      type="button"
-      aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'}
-      className="group rounded-full bg-[#1d1711]/85 px-3 py-2 shadow-lg shadow-black/20 ring-1 ring-amber-200/20 backdrop-blur transition hover:ring-amber-200/40"
-      onClick={() => setTheme(otherTheme)}
-    >
-      <SunIcon className="h-6 w-6 fill-amber-300/10 stroke-amber-200/70 transition group-hover:fill-amber-300/20 group-hover:stroke-amber-100 dark:hidden [@media(prefers-color-scheme:dark)]:fill-amber-300/10 [@media(prefers-color-scheme:dark)]:stroke-amber-200/70" />
-      <MoonIcon className="hidden h-6 w-6 fill-teal-300/10 stroke-teal-200/70 transition group-hover:stroke-teal-100 dark:block [@media_not_(prefers-color-scheme:dark)]:fill-teal-300/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-200/70" />
-    </button>
-  )
-}
-
-function clamp(number, a, b) {
-  let min = Math.min(a, b)
-  let max = Math.max(a, b)
-  return Math.min(Math.max(number, min), max)
-}
-
-function AvatarContainer({ className, ...props }) {
-  return (
-    <div
-      className={clsx(
-        className,
-        'h-10 w-10 rounded-full bg-[#1d1711]/90 p-0.5 shadow-lg shadow-black/20 ring-1 ring-amber-200/20 backdrop-blur',
-      )}
-      {...props}
-    />
-  )
-}
-
-function Avatar({ large = false, className, ...props }) {
-  return (
-    <Link
-      href="/"
-      aria-label="Home"
-      className={clsx(className, 'pointer-events-auto')}
-      {...props}
-    >
-      <Image
-        src={avatarImage}
-        alt=""
-        sizes={large ? '4rem' : '2.25rem'}
-        className={clsx(
-          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
-          large ? 'h-16 w-16' : 'h-9 w-9',
-        )}
-        priority
-      />
-    </Link>
-  )
-}
-
 export function Header() {
-  let isHomePage = usePathname() === '/'
-
-  let headerRef = useRef(null)
-  let avatarRef = useRef(null)
-  let isInitial = useRef(true)
-
-  useEffect(() => {
-    let downDelay = avatarRef.current?.offsetTop ?? 0
-    let upDelay = 64
-
-    function setProperty(property, value) {
-      document.documentElement.style.setProperty(property, value)
-    }
-
-    function removeProperty(property) {
-      document.documentElement.style.removeProperty(property)
-    }
-
-    function updateHeaderStyles() {
-      if (!headerRef.current) {
-        return
-      }
-
-      let { top, height } = headerRef.current.getBoundingClientRect()
-      let scrollY = clamp(
-        window.scrollY,
-        0,
-        document.body.scrollHeight - window.innerHeight,
-      )
-
-      if (isInitial.current) {
-        setProperty('--header-position', 'sticky')
-      }
-
-      setProperty('--content-offset', `${downDelay}px`)
-
-      if (isInitial.current || scrollY < downDelay) {
-        setProperty('--header-height', `${downDelay + height}px`)
-        setProperty('--header-mb', `${-downDelay}px`)
-      } else if (top + height < -upDelay) {
-        let offset = Math.max(height, scrollY - upDelay)
-        setProperty('--header-height', `${offset}px`)
-        setProperty('--header-mb', `${height - offset}px`)
-      } else if (top === 0) {
-        setProperty('--header-height', `${scrollY + height}px`)
-        setProperty('--header-mb', `${-scrollY}px`)
-      }
-
-      if (top === 0 && scrollY > 0 && scrollY >= downDelay) {
-        setProperty('--header-inner-position', 'fixed')
-        removeProperty('--header-top')
-        removeProperty('--avatar-top')
-      } else {
-        removeProperty('--header-inner-position')
-        setProperty('--header-top', '0px')
-        setProperty('--avatar-top', '0px')
-      }
-    }
-
-    function updateAvatarStyles() {
-      if (!isHomePage) {
-        return
-      }
-
-      let fromScale = 1
-      let toScale = 36 / 64
-      let fromX = 0
-      let toX = 2 / 16
-
-      let scrollY = downDelay - window.scrollY
-
-      let scale = (scrollY * (fromScale - toScale)) / downDelay + toScale
-      scale = clamp(scale, fromScale, toScale)
-
-      let x = (scrollY * (fromX - toX)) / downDelay + toX
-      x = clamp(x, fromX, toX)
-
-      setProperty(
-        '--avatar-image-transform',
-        `translate3d(${x}rem, 0, 0) scale(${scale})`,
-      )
-
-      let borderScale = 1 / (toScale / scale)
-      let borderX = (-toX + x) * borderScale
-      let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`
-
-      setProperty('--avatar-border-transform', borderTransform)
-      setProperty('--avatar-border-opacity', scale === toScale ? '1' : '0')
-    }
-
-    function updateStyles() {
-      updateHeaderStyles()
-      updateAvatarStyles()
-      isInitial.current = false
-    }
-
-    updateStyles()
-    window.addEventListener('scroll', updateStyles, { passive: true })
-    window.addEventListener('resize', updateStyles)
-
-    return () => {
-      window.removeEventListener('scroll', updateStyles)
-      window.removeEventListener('resize', updateStyles)
-    }
-  }, [isHomePage])
-
   return (
-    <>
-      <header
-        className="pointer-events-none relative z-50 flex flex-none flex-col"
-        style={{
-          height: 'var(--header-height)',
-          marginBottom: 'var(--header-mb)',
-        }}
-      >
-        {isHomePage && (
-          <>
-            <div
-              ref={avatarRef}
-              className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]"
-            />
-            <Container
-              className="top-0 order-last -mb-3 pt-3"
-              style={{
-                position: 'var(--header-position)',
-              }}
-            >
-              <div
-                className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                style={{
-                  position: 'var(--header-inner-position)',
-                }}
-              >
-                <div className="relative">
-                  <AvatarContainer
-                    className="absolute left-0 top-3 origin-left transition-opacity"
-                    style={{
-                      opacity: 'var(--avatar-border-opacity, 0)',
-                      transform: 'var(--avatar-border-transform)',
-                    }}
-                  />
-                  <Avatar
-                    large
-                    className="block h-16 w-16 origin-left"
-                    style={{ transform: 'var(--avatar-image-transform)' }}
-                  />
-                </div>
-              </div>
-            </Container>
-          </>
-        )}
-        <div
-          ref={headerRef}
-          className="top-0 z-10 h-16 pt-6"
-          style={{
-            position: 'var(--header-position)',
-          }}
-        >
-          <Container
-            className="top-[var(--header-top,theme(spacing.6))] w-full"
-            style={{
-              position: 'var(--header-inner-position)',
-            }}
-          >
-            <div className="relative flex gap-4">
-              <div className="flex flex-1">
-                {!isHomePage && (
-                  <AvatarContainer>
-                    <Avatar />
-                  </AvatarContainer>
-                )}
-              </div>
-              <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto md:hidden" />
-                <DesktopNavigation className="pointer-events-auto hidden md:block" />
-              </div>
-              <div className="flex justify-end md:flex-1">
-                <div className="pointer-events-auto">
-                  <ThemeToggle />
-                </div>
-              </div>
+    <header className="relative z-50 mx-auto w-full max-w-7xl px-7 pt-7 sm:px-8 lg:px-8">
+      <div className="dossier-frame bg-ink/70 backdrop-blur">
+        <div className="grid grid-cols-[1fr_auto] md:grid-cols-[1.45fr_repeat(5,minmax(5.75rem,0.72fr))_1.08fr_0.84fr]">
+          <div className="flex min-h-24 items-center border-r border-cream/18 px-4 py-4 sm:px-5">
+            <Wordmark />
+          </div>
+          <div className="flex items-center justify-end px-4 md:hidden">
+            <MobileNavigation />
+          </div>
+          <nav className="hidden md:contents" aria-label="Primary">
+            {navItems.map(([label, href]) => (
+              <NavLink key={href} href={href}>
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+          <div className="nav-cell hidden min-h-16 items-center justify-between gap-2 px-4 py-3 md:flex">
+            <span className="text-sm uppercase text-cream/42">Socials</span>
+            <div className="flex gap-2">
+              <SocialLink
+                href="https://www.github.com/drew-royster"
+                label="GitHub"
+                icon={GitHubIcon}
+              />
+              <SocialLink
+                href="https://www.linkedin.com/in/drew-royster/"
+                label="LinkedIn"
+                icon={LinkedInIcon}
+              />
             </div>
-          </Container>
+          </div>
+          <Link
+            href="/#contact"
+            className="nav-cell hidden min-h-16 items-center px-4 py-3 text-sm uppercase text-cream/72 transition hover:bg-cream/[0.035] hover:text-cream md:flex"
+          >
+            Contact
+          </Link>
         </div>
-      </header>
-      {isHomePage && (
-        <div
-          className="flex-none"
-          style={{ height: 'var(--content-offset)' }}
-        />
-      )}
-    </>
+      </div>
+    </header>
   )
 }

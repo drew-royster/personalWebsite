@@ -8,6 +8,21 @@ module.exports = {
   darkMode: 'selector',
   plugins: [typographyPlugin],
   theme: {
+    extend: {
+      colors: {
+        ink: '#031c1a',
+        pitch: '#000000',
+        cream: '#ffe6cc',
+        brass: '#c9975b',
+        oxidized: '#06312e',
+        signal: '#a92718',
+      },
+      fontFamily: {
+        display: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+        serif: ['Georgia', 'Times New Roman', 'serif'],
+        mono: ['Courier Prime', 'Courier New', 'monospace'],
+      },
+    },
     fontSize: {
       xs: ['0.8125rem', { lineHeight: '1.5rem' }],
       sm: ['0.875rem', { lineHeight: '1.5rem' }],

@@ -46,8 +46,8 @@ export default async function ArticlesIndex() {
       title="Programming, machine learning, user experiences and more."
       intro="My thoughts on programming, machine learning and the future of user experiences."
     >
-      <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
-        <div className="flex max-w-3xl flex-col space-y-16">
+      <div className="border-t border-cream/18 pt-6">
+        <div className="flex max-w-3xl flex-col space-y-12">
           {articles.map((article) => (
             <Article key={article.slug} article={article} />
           ))}

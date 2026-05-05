@@ -1,368 +1,346 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import clsx from 'clsx'
 
-import { Button } from '@/components/Button'
-import { Card } from '@/components/Card'
-import { Container } from '@/components/Container'
-import {
-  GitHubIcon,
-  LinkedInIcon,
-} from '@/components/SocialIcons'
-import image1 from '@/images/photos/retro/agent-ears.jpg'
-import image2 from '@/images/photos/retro/machine-hands.jpg'
-import image3 from '@/images/photos/retro/memory-archive.jpg'
-import image4 from '@/images/photos/retro/speech-to-action.jpg'
-import image5 from '@/images/photos/retro/radio-builder.jpg'
+import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
+import agentEars from '@/images/photos/retro/agent-ears.jpg'
+import machineHands from '@/images/photos/retro/machine-hands.jpg'
+import speechToAction from '@/images/photos/retro/speech-to-action.jpg'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
-function MailIcon(props) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-      />
-      <path
-        d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
-      />
-    </svg>
-  )
-}
+const capabilities = [
+  {
+    title: 'Voice Interfaces',
+    body: 'Real-time speech, transcripts, turn-taking, interruptions, and handoffs that feel like software instead of a phone tree.',
+  },
+  {
+    title: 'Agent Runtime',
+    body: 'Process design, delegation, permissions, retries, and observability around model-driven work.',
+  },
+  {
+    title: 'Tool Workflows',
+    body: 'APIs, callbacks, webhooks, browser control, and deterministic rails around stochastic model behavior.',
+  },
+  {
+    title: 'Local Systems',
+    body: 'Self-hosted model serving, private infrastructure, and practical deployments where the runtime matters as much as the demo.',
+  },
+  {
+    title: 'Automations',
+    body: 'Scheduled reports, unattended jobs, event listeners, and systems that keep moving after the chat window closes.',
+  },
+  {
+    title: 'Evaluation Loops',
+    body: 'Small tests, traces, review surfaces, and failure notes that make AI work inspectable enough to trust.',
+  },
+]
 
-function BriefcaseIcon(props) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-      />
-      <path
-        d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
-      />
-    </svg>
-  )
-}
+const caseStudies = [
+  {
+    label: 'Staff Search',
+    title: 'Natural language search over people data',
+    body: 'A RAG and function-calling application for finding candidates through plain-language staffing queries.',
+    href: '/articles/staff-search-rag-function-calling',
+  },
+  {
+    label: 'Shaolin AI',
+    title: 'Applied AI education and product builds',
+    body: 'Bootcamp work, agent demos, and applied engineering around what teams can actually build with models.',
+    href: 'https://shaolin.ai',
+  },
+  {
+    label: 'Smart Autofill',
+    title: 'Identity-aware form automation',
+    body: 'A browser extension experiment for using personal context and LLMs to complete forms with less friction.',
+    href: 'https://github.com/drew-royster/smart-autofill-extension',
+  },
+]
 
-function ArrowDownIcon(props) {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function Article({ article, index }) {
-  return (
-    <Card
-      as="article"
-      className="retro-card spaceage-panel rounded-lg border border-amber-200/15 p-6 transition duration-300 hover:-translate-y-1 hover:border-teal-300/45"
-    >
-      <span className="retro-corners" />
-      <span className="phosphor-status" />
-      <div className="mb-8 flex items-center justify-between">
-        <span className="text-xs font-medium uppercase tracking-[0.24em] text-teal-200/80">
-          note {String(index + 1).padStart(2, '0')}
-        </span>
-        <span className="h-px w-16 bg-gradient-to-r from-teal-300/70 to-transparent" />
-      </div>
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
-      </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
-      </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
-    </Card>
-  )
-}
+const terminalLines = [
+  ['voice.input', 'caller asks for a concrete next step'],
+  ['transcript.stream', 'speech becomes inspectable state'],
+  ['context.load', 'constraints, data, permissions'],
+  ['agent.plan', 'choose tool path before action'],
+  ['tool.call', 'calendar, browser, webhook, database'],
+  ['handoff', 'summary delivered with traceable context'],
+]
 
 function SocialLink({ icon: Icon, ...props }) {
   return (
-    <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-amber-100/60 transition group-hover:fill-teal-300" />
+    <Link
+      className="inline-flex h-10 w-10 items-center justify-center border border-cream/18 text-cream/62 transition hover:border-cream/42 hover:text-cream"
+      {...props}
+    >
+      <Icon className="h-5 w-5 fill-current" />
     </Link>
   )
 }
 
-function Newsletter() {
+function Shell({ children, className = '', ...props }) {
   return (
-    <form
-      action="/thank-you"
-      className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
+    <section
+      className={`mx-auto w-full max-w-7xl px-7 sm:px-8 lg:px-8 ${className}`}
+      {...props}
     >
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <MailIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Stay up to date</span>
-      </h2>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Get notified when I publish something new, and unsubscribe at any time.
-      </p>
-      <div className="mt-6 flex">
-        <input
-          type="email"
-          placeholder="Email address"
-          aria-label="Email address"
-          required
-          className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10"
-        />
-        <Button type="submit" className="ml-4 flex-none">
-          Join
-        </Button>
-      </div>
-    </form>
+      {children}
+    </section>
   )
 }
 
-function Role({ role }) {
-  let startLabel =
-    typeof role.start === 'string' ? role.start : role.start.label
-  let startDate =
-    typeof role.start === 'string' ? role.start : role.start.dateTime
-
-  let endLabel = typeof role.end === 'string' ? role.end : role.end.label
-  let endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
-
+function CommandBlock({ step, title, children, href }) {
   return (
-    <li className="flex gap-4">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
-      </div>
-      <dl className="flex flex-auto flex-wrap gap-x-2">
-        <dt className="sr-only">Company</dt>
-        <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          {role.company}
-        </dd>
-        <dt className="sr-only">Role</dt>
-        <dd className="text-xs text-zinc-500 dark:text-zinc-400">
-          {role.title}
-        </dd>
-        <dt className="sr-only">Date</dt>
-        <dd
-          className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-          aria-label={`${startLabel} until ${endLabel}`}
-        >
-          <time dateTime={startDate}>{startLabel}</time>{' '}
-          <span aria-hidden="true">—</span>{' '}
-          <time dateTime={endDate}>{endLabel}</time>
-        </dd>
-      </dl>
-    </li>
-  )
-}
-
-function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
-
-  return (
-    <div className="mt-14 sm:mt-20">
-      <div className="-my-4 overflow-hidden border-y border-amber-200/10 bg-[linear-gradient(90deg,rgba(255,232,178,0.06),rgba(47,211,198,0.04),rgba(255,232,178,0.06))] py-8">
-        <div className="photo-drift flex justify-center gap-5 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-lg bg-[#211910] shadow-2xl shadow-black/30 ring-1 ring-amber-200/20 transition duration-500 hover:-translate-y-2 hover:rotate-0 sm:w-72',
-              rotations[imageIndex % rotations.length],
-            )}
+    <div className="border-t border-cream/18 py-3">
+      <div className="mb-2 flex items-center justify-between gap-4">
+        <p className="small-label text-sm text-cream/58">
+          {step}. {title}
+        </p>
+        {href && (
+          <Link
+            href={href}
+            className="small-label text-xs text-cream/42 transition hover:text-cream"
           >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+            Open
+          </Link>
+        )}
+      </div>
+      <code className="block border border-cream/18 bg-black/18 px-3 py-2 font-mono text-sm text-cream/86">
+        {children}
+      </code>
+    </div>
+  )
+}
+
+function TerminalDemo() {
+  return (
+    <div className="h-full border border-cream bg-black/70 p-3">
+      <div className="mb-4 flex items-center gap-2 border-b border-cream/18 pb-3">
+        <span className="h-2.5 w-2.5 rounded-full bg-cream/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-brass/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-signal/80" />
+        <span className="ml-3 font-mono text-xs text-cream/32">drew.systems</span>
+      </div>
+      <div className="space-y-3 font-mono text-xs sm:text-sm">
+        {terminalLines.map(([event, detail]) => (
+          <div key={event} className="grid gap-1 sm:grid-cols-[9.5rem_1fr]">
+            <span className="text-brass">{event}</span>
+            <span className="text-cream/66">{detail}</span>
           </div>
         ))}
-        </div>
+      </div>
+      <div className="mt-6 border-t border-cream/14 pt-4 font-mono text-xs text-cream/40">
+        status: working software, not a slide deck
       </div>
     </div>
   )
 }
 
-const focusAreas = [
-  'voice agents',
-  'speech workflows',
-  'tool use',
-  'agent memory',
-  'software that acts',
-]
+function ImagePlate({ image, label, priority = false }) {
+  return (
+    <div className="image-plate relative h-full min-h-[18rem] overflow-hidden border border-cream/18 bg-oxidized">
+      <Image
+        src={image}
+        alt=""
+        sizes="(min-width: 1024px) 38rem, 100vw"
+        className="etched-image absolute inset-0 h-full w-full object-cover opacity-80"
+        priority={priority}
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,28,26,0.1),rgba(0,0,0,0.42))]" />
+      <p className="small-label absolute bottom-4 right-4 text-sm text-cream">
+        {label}
+      </p>
+    </div>
+  )
+}
 
-const principles = [
-  {
-    title: 'Listen',
-    label: '01',
-    description:
-      'Speech interfaces, transcripts, turn-taking, and the product details that make voice feel natural instead of ornamental.',
-  },
-  {
-    title: 'Remember',
-    label: '02',
-    description:
-      'Context and memory systems that help agents carry useful history without turning every interaction into a junk drawer.',
-  },
-  {
-    title: 'Act',
-    label: '03',
-    description:
-      'Tool calls, callbacks, automations, and workflows that move voice AI from impressive conversation into useful software.',
-  },
-]
+function Article({ article, index }) {
+  return (
+    <article className="group border-t border-cream/18 p-4 transition hover:bg-cream/[0.035] md:border-l md:border-t-0">
+      <p className="small-label text-xs text-cream/42">
+        Note {String(index + 1).padStart(2, '0')} · {formatDate(article.date)}
+      </p>
+      <h3 className="mt-4 text-xl font-semibold text-cream">
+        <Link href={`/articles/${article.slug}`}>
+          <span className="absolute" />
+          {article.title}
+        </Link>
+      </h3>
+      <p className="mt-3 text-sm leading-6 text-cream/62">{article.description}</p>
+      <Link
+        href={`/articles/${article.slug}`}
+        className="small-label mt-5 inline-block text-xs text-brass transition group-hover:text-cream"
+      >
+        Read article
+      </Link>
+    </article>
+  )
+}
+
+function CaseStudy({ item }) {
+  return (
+    <Link
+      href={item.href}
+      className="group block border-t border-cream/18 p-4 transition hover:bg-cream/[0.035] md:border-l md:border-t-0"
+    >
+      <p className="small-label text-xs text-cream/42">{item.label}</p>
+      <h3 className="mt-4 text-xl font-semibold text-cream">{item.title}</h3>
+      <p className="mt-3 text-sm leading-6 text-cream/62">{item.body}</p>
+      <span className="small-label mt-5 inline-block text-xs text-brass transition group-hover:text-cream">
+        Open record
+      </span>
+    </Link>
+  )
+}
 
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
   return (
     <>
-      <Container className="mt-8 sm:mt-12">
-        <section className="relative grid items-end gap-12 overflow-hidden rounded-[1.5rem] border border-amber-200/10 bg-[#1b130d]/45 p-5 shadow-2xl shadow-black/20 sm:p-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(360px,0.96fr)] lg:p-10">
-          <div className="spaceage-grid pointer-events-none absolute inset-0 opacity-70" />
-          <div className="slow-orbit pointer-events-none absolute -right-48 -top-64 h-[42rem] w-[42rem] rounded-full border border-teal-200/10" />
-          <div className="slow-orbit pointer-events-none absolute -right-36 -top-52 h-[34rem] w-[34rem] rounded-full border border-amber-200/10 [animation-duration:52s]" />
-          <div className="relative z-10 max-w-3xl">
-            <p className="text-sm font-medium uppercase tracking-[0.24em] text-teal-300">
-              Voice-first AI systems
-            </p>
-            <h1 className="mt-5 text-6xl font-bold tracking-tight text-amber-50 sm:text-8xl">
-              Ears for agents.
-              <span className="block text-amber-200/60">
-                Hands for machines.
-              </span>
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-amber-100/75">
-              I’m Drew Royster. I build voice-first AI systems for the space
-              between speech, agents, tools, and real-world action.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {focusAreas.map((area) => (
-                <span
-                  key={area}
-                  className="rounded-full border border-amber-200/15 bg-amber-100/[0.03] px-3 py-1 text-sm text-amber-100/70"
-                >
-                  {area}
-                </span>
-              ))}
+      <Shell className="pt-0">
+        <div className="dossier-frame border-t-0 bg-ink/58">
+          <div className="relative overflow-hidden px-4 py-20 text-center sm:px-8 sm:py-24 lg:px-20">
+            <div className="image-plate pointer-events-none absolute inset-0 opacity-70">
+              <Image
+                src={agentEars}
+                alt=""
+                sizes="100vw"
+                className="etched-image absolute inset-0 h-full w-full object-cover"
+                priority
+              />
             </div>
-            <div className="mt-9 flex items-center gap-6">
-              <Link
-                href="/projects"
-                className="rounded-full bg-amber-200 px-5 py-2.5 text-sm font-semibold text-[#21170f] shadow-lg shadow-amber-950/20 transition hover:-translate-y-0.5 hover:bg-amber-100"
-              >
-                See the work
-              </Link>
-              <div className="flex gap-5">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(3,28,26,0.2)_0%,rgba(3,28,26,0.72)_48%,rgba(0,0,0,0.82)_100%)]" />
+            <div className="relative mx-auto max-w-4xl">
+              <p className="small-label text-sm text-cream/62">
+                Independent AI systems builder · Utah
+              </p>
+              <h1 className="font-display mt-4 text-5xl leading-[0.92] text-cream sm:text-7xl lg:text-8xl">
+                Voice systems, tools, and agents that act.
+              </h1>
+              <p className="mx-auto mt-7 max-w-2xl font-serif text-lg leading-8 text-cream/74">
+                I build the connective tissue between speech, models, tools,
+                private infrastructure, and real-world action.
+              </p>
+              <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-0 text-left">
+                <CommandBlock
+                  step="1"
+                  title="Build"
+                >
+                  speech + models + APIs + product workflow
+                </CommandBlock>
+                <CommandBlock step="2" title="Ship">
+                  prototype + deployment + traces + handoff
+                </CommandBlock>
+              </div>
+              <div className="mt-8 flex items-center justify-center gap-3">
                 <SocialLink
                   href="https://www.github.com/drew-royster"
-                  aria-label="Follow on GitHub"
+                  aria-label="GitHub"
                   icon={GitHubIcon}
                 />
                 <SocialLink
                   href="https://www.linkedin.com/in/drew-royster/"
-                  aria-label="Follow on LinkedIn"
+                  aria-label="LinkedIn"
                   icon={LinkedInIcon}
                 />
               </div>
             </div>
           </div>
-          <div className="relative z-10 mx-auto w-full max-w-md lg:mx-0 lg:ml-auto">
-            <div className="absolute -inset-4 rounded-[1.25rem] border border-teal-300/15" />
-            <div className="absolute -inset-8 rounded-full bg-teal-300/10 blur-3xl" />
-            <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-[#211910] shadow-2xl shadow-black/40 ring-1 ring-amber-200/20">
-              <Image
-                src={image4}
-                alt=""
-                sizes="(min-width: 1024px) 28rem, 100vw"
-                className="absolute inset-0 h-full w-full object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#120f0b]/50 via-transparent to-transparent" />
-              <div className="signal-pulse absolute left-6 right-6 top-7 h-px bg-gradient-to-r from-transparent via-teal-200 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 border-t border-amber-200/15 bg-[#120f0b]/70 px-5 py-4 backdrop-blur">
-                <p className="text-xs font-medium uppercase tracking-[0.22em] text-teal-200">
-                  spoken intent
-                </p>
-                <p className="mt-1 text-sm text-amber-100/80">
-                  routed into tools, memory, and useful action
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </Container>
-      <Photos />
-      <Container className="mt-20 md:mt-24">
-        <div className="grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
-          {principles.map((principle) => (
-            <div
-              key={principle.title}
-              className="retro-card spaceage-panel rounded-lg border border-amber-200/15 p-7 transition duration-300 hover:-translate-y-1 hover:border-teal-300/45"
-            >
-              <span className="retro-corners" />
-              <span className="phosphor-status" />
-              <div className="mb-6 flex items-center justify-between">
-                <h2 className="text-base font-semibold text-amber-50">
-                  {principle.title}
-                </h2>
-                <span className="rounded-full border border-teal-300/25 px-2.5 py-1 text-xs text-teal-200">
-                  {principle.label}
-                </span>
-              </div>
-              <p className="mt-3 text-sm leading-6 text-amber-100/70">
-                {principle.description}
-              </p>
-            </div>
-          ))}
         </div>
-      </Container>
-      <Container className="mt-20 md:mt-24">
-        <div className="relative overflow-hidden rounded-[1.25rem] border border-amber-200/10 bg-[#15100b]/70 p-5 sm:p-8">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-200/35 to-transparent" />
-          <div className="mb-10 grid gap-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(280px,0.28fr)] lg:items-end">
-            <div className="max-w-2xl">
-              <p className="text-sm font-medium uppercase tracking-[0.2em] text-teal-300">
-                Field notes
-              </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-amber-50 sm:text-4xl">
-                Writing from the edge of voice, agents, and useful software.
-              </h2>
+      </Shell>
+
+      <Shell>
+        <div className="dossier-frame border-t-0 bg-black/44">
+          <div className="grid border-b border-cream/18 lg:grid-cols-[1fr_0.95fr]">
+            <div className="p-4 lg:p-6">
+              <p className="small-label mb-4 text-xl text-cream">See It in Action</p>
+              <TerminalDemo />
             </div>
-            <p className="text-sm leading-6 text-amber-100/55">
-              Essays, experiments, and working notes from the place where speech
-              turns into tools.
-            </p>
+            <div className="border-t border-cream/18 lg:border-l lg:border-t-0">
+              <ImagePlate image={speechToAction} label="speech to action" />
+            </div>
           </div>
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <div className="border-b border-cream/18 p-4">
+            <p className="small-label text-xl text-cream">Features</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3">
+            {capabilities.map((item) => (
+              <div
+                key={item.title}
+                className="border-t border-cream/18 p-4 md:border-l md:[&:nth-child(-n+2)]:border-t-0 lg:[&:nth-child(-n+3)]:border-t-0"
+              >
+                <h2 className="small-label text-base text-cream">{item.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-cream/62">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Shell>
+
+      <Shell id="contact" className="mt-10">
+        <div className="dossier-frame bg-black/40">
+          <div className="grid border-b border-cream/18 lg:grid-cols-[0.72fr_1fr]">
+            <div className="p-4 sm:p-6">
+              <p className="small-label text-sm text-cream/48">Work Records</p>
+              <h2 className="mt-4 max-w-xl text-3xl font-semibold text-cream sm:text-4xl">
+                Systems with a bias toward shipping.
+              </h2>
+              <p className="mt-5 max-w-xl font-serif text-base leading-7 text-cream/64">
+                The through-line is practical AI: get a model connected to the
+                right context, give it tools, put guardrails around action, and
+                leave the client with software they can run.
+              </p>
+            </div>
+            <div className="border-t border-cream/18 lg:border-l lg:border-t-0">
+              <ImagePlate image={machineHands} label="tools and machines" />
+            </div>
+          </div>
+          <div className="grid md:grid-cols-3">
+            {caseStudies.map((item) => (
+              <CaseStudy key={item.title} item={item} />
+            ))}
+          </div>
+        </div>
+      </Shell>
+
+      <Shell className="mt-10">
+        <div className="dossier-frame bg-black/40">
+          <div className="border-b border-cream/18 p-4 sm:p-6">
+            <p className="small-label text-sm text-cream/48">Field Notes</p>
+            <h2 className="mt-4 max-w-3xl text-3xl font-semibold text-cream sm:text-4xl">
+              Notes from the edge of agents, interfaces, and useful software.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4">
             {articles.map((article, index) => (
               <Article key={article.slug} article={article} index={index} />
             ))}
           </div>
         </div>
-      </Container>
+      </Shell>
+
+      <Shell className="mt-10">
+        <div className="dossier-frame grid bg-ink/52 md:grid-cols-[1fr_auto]">
+          <div className="p-4 sm:p-6">
+            <p className="small-label text-sm text-cream/48">Contact</p>
+            <h2 className="mt-4 text-3xl font-semibold text-cream">
+              Bring a hard, weird AI system.
+            </h2>
+            <p className="mt-4 max-w-2xl font-serif text-base leading-7 text-cream/64">
+              Best fit: voice workflows, agent tooling, private model
+              infrastructure, automation glue, and product prototypes that need
+              someone comfortable across the whole stack.
+            </p>
+          </div>
+          <div className="flex items-center border-t border-cream/18 p-4 md:border-l md:border-t-0 sm:p-6">
+            <Link
+              href="mailto:drew.royster@gmail.com?subject=AI%20systems%20build"
+              className="small-label border border-cream bg-cream px-5 py-3 text-sm text-ink transition hover:bg-transparent hover:text-cream"
+            >
+              Email Drew
+            </Link>
+          </div>
+        </div>
+      </Shell>
     </>
   )
 }

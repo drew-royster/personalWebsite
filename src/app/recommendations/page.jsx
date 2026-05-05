@@ -14,7 +14,7 @@ function ToolsSection({ children, ...props }) {
 
 function Tool({ title, href, children }) {
   return (
-    <Card as="li">
+    <Card as="li" className="border-t border-cream/18 pt-6 first:border-t-0 first:pt-0">
       <Card.Title as="h3" href={href}>
         {title}
       </Card.Title>
