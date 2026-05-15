@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { WebGLDitherSignalPanel } from '@/components/WebGLDitherSignalPanel'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
-import agentEars from '@/images/photos/retro/agent-ears.jpg'
 import machineHands from '@/images/photos/retro/machine-hands.jpg'
 import speechToAction from '@/images/photos/retro/speech-to-action.jpg'
 import { getAllArticles } from '@/lib/articles'
@@ -68,7 +68,7 @@ const terminalLines = [
 function SocialLink({ icon: Icon, ...props }) {
   return (
     <Link
-      className="inline-flex h-10 w-10 items-center justify-center border border-cream/18 text-cream/62 transition hover:border-cream/42 hover:text-cream"
+      className="inline-flex h-10 w-10 items-center justify-center border border-cream/18 text-cream/62 transition hover:border-rust/50 hover:text-rust"
       {...props}
     >
       <Icon className="h-5 w-5 fill-current" />
@@ -89,7 +89,7 @@ function Shell({ children, className = '', ...props }) {
 
 function CommandBlock({ step, title, children, href }) {
   return (
-    <div className="border-t border-cream/18 py-3">
+    <div className="border-t border-cream/18 py-3 first:border-rust/65">
       <div className="mb-2 flex items-center justify-between gap-4">
         <p className="small-label text-sm text-cream/58">
           {step}. {title}
@@ -116,13 +116,13 @@ function TerminalDemo() {
       <div className="mb-4 flex items-center gap-2 border-b border-cream/18 pb-3">
         <span className="h-2.5 w-2.5 rounded-full bg-cream/80" />
         <span className="h-2.5 w-2.5 rounded-full bg-brass/80" />
-        <span className="h-2.5 w-2.5 rounded-full bg-signal/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-rust/90" />
         <span className="ml-3 font-mono text-xs text-cream/32">drew.systems</span>
       </div>
       <div className="space-y-3 font-mono text-xs sm:text-sm">
         {terminalLines.map(([event, detail]) => (
           <div key={event} className="grid gap-1 sm:grid-cols-[9.5rem_1fr]">
-            <span className="text-brass">{event}</span>
+            <span className="text-rust">{event}</span>
             <span className="text-cream/66">{detail}</span>
           </div>
         ))}
@@ -167,7 +167,7 @@ function Article({ article, index }) {
       <p className="mt-3 text-sm leading-6 text-cream/62">{article.description}</p>
       <Link
         href={`/articles/${article.slug}`}
-        className="small-label mt-5 inline-block text-xs text-brass transition group-hover:text-cream"
+        className="small-label mt-5 inline-block text-xs text-rust transition group-hover:text-cream"
       >
         Read article
       </Link>
@@ -184,7 +184,7 @@ function CaseStudy({ item }) {
       <p className="small-label text-xs text-cream/42">{item.label}</p>
       <h3 className="mt-4 text-xl font-semibold text-cream">{item.title}</h3>
       <p className="mt-3 text-sm leading-6 text-cream/62">{item.body}</p>
-      <span className="small-label mt-5 inline-block text-xs text-brass transition group-hover:text-cream">
+      <span className="small-label mt-5 inline-block text-xs text-rust transition group-hover:text-cream">
         Open record
       </span>
     </Link>
@@ -199,18 +199,11 @@ export default async function Home() {
       <Shell className="pt-0">
         <div className="dossier-frame border-t-0 bg-ink/58">
           <div className="relative overflow-hidden px-4 py-20 text-center sm:px-8 sm:py-24 lg:px-20">
-            <div className="image-plate pointer-events-none absolute inset-0 opacity-70">
-              <Image
-                src={agentEars}
-                alt=""
-                sizes="100vw"
-                className="etched-image absolute inset-0 h-full w-full object-cover"
-                priority
-              />
-            </div>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(3,28,26,0.2)_0%,rgba(3,28,26,0.72)_48%,rgba(0,0,0,0.82)_100%)]" />
+            <WebGLDitherSignalPanel className="pointer-events-none absolute inset-0 opacity-80" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,rgba(3,28,26,0.08)_0%,rgba(3,28,26,0.62)_48%,rgba(0,0,0,0.82)_100%)]" />
             <div className="relative mx-auto max-w-4xl">
-              <p className="small-label text-sm text-cream/62">
+              <div className="accent-rule mx-auto mb-5 h-px w-24" />
+              <p className="small-label accent-kicker text-sm">
                 Independent AI systems builder · Utah
               </p>
               <h1 className="font-display mt-4 text-5xl leading-[0.92] text-cream sm:text-7xl lg:text-8xl">
@@ -280,7 +273,7 @@ export default async function Home() {
         <div className="dossier-frame bg-black/40">
           <div className="grid border-b border-cream/18 lg:grid-cols-[0.72fr_1fr]">
             <div className="p-4 sm:p-6">
-              <p className="small-label text-sm text-cream/48">Work Records</p>
+              <p className="small-label text-sm text-rust">Work Records</p>
               <h2 className="mt-4 max-w-xl text-3xl font-semibold text-cream sm:text-4xl">
                 Systems with a bias toward shipping.
               </h2>
@@ -305,7 +298,7 @@ export default async function Home() {
       <Shell className="mt-10">
         <div className="dossier-frame bg-black/40">
           <div className="border-b border-cream/18 p-4 sm:p-6">
-            <p className="small-label text-sm text-cream/48">Field Notes</p>
+            <p className="small-label text-sm text-rust">Field Notes</p>
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold text-cream sm:text-4xl">
               Notes from the edge of agents, interfaces, and useful software.
             </h2>
@@ -321,7 +314,7 @@ export default async function Home() {
       <Shell className="mt-10">
         <div className="dossier-frame grid bg-ink/52 md:grid-cols-[1fr_auto]">
           <div className="p-4 sm:p-6">
-            <p className="small-label text-sm text-cream/48">Contact</p>
+            <p className="small-label text-sm text-rust">Contact</p>
             <h2 className="mt-4 text-3xl font-semibold text-cream">
               Bring a hard, weird AI system.
             </h2>
@@ -334,7 +327,7 @@ export default async function Home() {
           <div className="flex items-center border-t border-cream/18 p-4 md:border-l md:border-t-0 sm:p-6">
             <Link
               href="mailto:drew.royster@gmail.com?subject=AI%20systems%20build"
-              className="small-label border border-cream bg-cream px-5 py-3 text-sm text-ink transition hover:bg-transparent hover:text-cream"
+              className="small-label border border-rust bg-rust px-5 py-3 text-sm text-ink transition hover:bg-transparent hover:text-rust"
             >
               Email Drew
             </Link>

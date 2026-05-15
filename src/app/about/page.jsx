@@ -4,6 +4,11 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
+import {
+  books,
+  currentFascinations,
+  personalThesis,
+} from '@/content/personalDossier.mjs'
 import portraitImage from '@/images/avatar.jpg'
 
 function SocialLink({ className, href, children, icon: Icon }) {
@@ -102,6 +107,69 @@ export default function About() {
           </aside>
         </div>
       </div>
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-[0.58fr_0.42fr]">
+        <section className="dossier-frame bg-black/35 p-4 sm:p-6">
+          <p className="small-label text-sm text-rust">Field note</p>
+          <h2 className="mt-3 text-2xl font-semibold text-cream">
+            {personalThesis.title}
+          </h2>
+          <p className="mt-4 font-serif text-base leading-7 text-cream/70">
+            {personalThesis.body}
+          </p>
+          <ul className="mt-5 grid gap-2 text-sm text-cream/58 sm:grid-cols-2">
+            {personalThesis.details.map((detail) => (
+              <li key={detail} className="border border-cream/12 bg-cream/[0.025] p-3">
+                {detail}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="dossier-frame bg-black/35 p-4 sm:p-6">
+          <p className="small-label text-sm text-rust">Current fascinations</p>
+          <ul role="list" className="mt-4 space-y-4">
+            {currentFascinations.map((item) => (
+              <li key={item.title}>
+                <h3 className="font-mono text-sm uppercase tracking-[0.18em] text-cream">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-cream/62">{item.body}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <section className="dossier-frame mt-8 bg-black/35 p-4 sm:p-6">
+        <div className="flex flex-col gap-4 border-b border-cream/14 pb-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="small-label text-sm text-rust">Marginalia</p>
+            <h2 className="mt-3 text-2xl font-semibold text-cream">
+              Books I’ve been thinking about
+            </h2>
+          </div>
+          <Link
+            href="/books"
+            className="font-mono text-xs uppercase tracking-[0.2em] text-rust transition hover:text-cream"
+          >
+            Full shelf
+          </Link>
+        </div>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          {books.slice(0, 3).map((book) => (
+            <article key={book.title} className="border border-cream/12 bg-cream/[0.025] p-4">
+              <h3 className="text-lg font-semibold text-cream">{book.title}</h3>
+              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-cream/42">
+                {book.author}
+              </p>
+              <p className="mt-3 font-serif text-sm leading-6 text-cream/66">
+                {book.note}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
     </Container>
   )
 }

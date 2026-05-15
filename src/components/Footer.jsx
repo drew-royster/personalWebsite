@@ -4,8 +4,10 @@ const footerLinks = [
   ['About', '/about'],
   ['Projects', '/projects'],
   ['Articles', '/articles'],
+  ['Books', '/books'],
   ['Talks', '/appearances'],
   ['Uses', '/recommendations'],
+  ['llms.txt', '/llms.txt'],
 ]
 
 function FooterLink({ href, children }) {

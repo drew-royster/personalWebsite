@@ -14,6 +14,7 @@ module.exports = {
         pitch: '#000000',
         cream: '#ffe6cc',
         brass: '#c9975b',
+        rust: '#9f5a2a',
         oxidized: '#06312e',
         signal: '#a92718',
       },

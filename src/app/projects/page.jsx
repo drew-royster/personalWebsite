@@ -60,7 +60,7 @@ function Project({ project, index }) {
         <p className="mt-3 text-sm leading-6 text-cream/62">
           {project.description}
         </p>
-        <p className="small-label mt-6 text-xs text-brass transition group-hover:text-cream">
+        <p className="small-label mt-6 text-xs text-rust transition group-hover:text-cream">
           {project.link.label}
         </p>
       </Link>

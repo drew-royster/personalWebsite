@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "voice-context": "node scripts/generate-voice-context.mjs",
+    "prebuild": "npm run voice-context",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --test tests/*.test.mjs"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {

@@ -16,6 +16,7 @@ const navItems = [
   ['About', '/about'],
   ['Articles', '/articles'],
   ['Projects', '/projects'],
+  ['Books', '/books'],
   ['Talks', '/appearances'],
   ['Uses', '/recommendations'],
 ]
@@ -73,8 +74,8 @@ function NavLink({ href, children, className }) {
     <Link
       href={href}
       className={clsx(
-        'nav-cell flex min-h-16 items-center px-4 py-3 text-sm uppercase text-cream/64 transition hover:bg-cream/[0.035] hover:text-cream',
-        isActive && 'bg-cream/[0.055] text-cream',
+        'nav-cell flex min-h-16 items-center px-4 py-3 text-sm uppercase text-cream/64 transition hover:bg-rust/[0.055] hover:text-cream',
+        isActive && 'bg-rust/[0.07] text-rust',
         className,
       )}
     >
@@ -88,7 +89,7 @@ function SocialLink({ href, label, icon: Icon }) {
     <Link
       href={href}
       aria-label={label}
-      className="inline-flex h-8 w-8 items-center justify-center border border-cream/14 text-cream/58 transition hover:border-cream/40 hover:text-cream"
+      className="inline-flex h-8 w-8 items-center justify-center border border-cream/14 text-cream/58 transition hover:border-rust/50 hover:text-rust"
     >
       <Icon className="h-4 w-4 fill-current" />
     </Link>
@@ -131,7 +132,7 @@ function MobileNavigation() {
                 <PopoverButton
                   as={Link}
                   href={href}
-                  className="block px-4 py-4 text-sm uppercase text-cream/78 transition hover:bg-cream/[0.04] hover:text-cream"
+                  className="block px-4 py-4 text-sm uppercase text-cream/78 transition hover:bg-rust/[0.06] hover:text-rust"
                 >
                   {label}
                 </PopoverButton>
@@ -148,7 +149,7 @@ export function Header() {
   return (
     <header className="relative z-50 mx-auto w-full max-w-7xl px-7 pt-7 sm:px-8 lg:px-8">
       <div className="dossier-frame bg-ink/70 backdrop-blur">
-        <div className="grid grid-cols-[1fr_auto] md:grid-cols-[1.45fr_repeat(5,minmax(5.75rem,0.72fr))_1.08fr_0.84fr]">
+        <div className="grid grid-cols-[1fr_auto] md:grid-cols-[1.35fr_repeat(6,minmax(4.9rem,0.66fr))_1.02fr_0.78fr]">
           <div className="flex min-h-24 items-center border-r border-cream/18 px-4 py-4 sm:px-5">
             <Wordmark />
           </div>
@@ -179,7 +180,7 @@ export function Header() {
           </div>
           <Link
             href="/#contact"
-            className="nav-cell hidden min-h-16 items-center px-4 py-3 text-sm uppercase text-cream/72 transition hover:bg-cream/[0.035] hover:text-cream md:flex"
+            className="nav-cell hidden min-h-16 items-center px-4 py-3 text-sm uppercase text-cream/72 transition hover:bg-rust/[0.055] hover:text-rust md:flex"
           >
             Contact
           </Link>
