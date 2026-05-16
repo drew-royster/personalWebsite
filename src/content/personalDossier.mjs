@@ -1,26 +1,26 @@
-export const currentFascinations = [
+export const operatingConstraints = [
   {
-    title: 'Hermes-IoT / ESP32 Echo Pyramid',
-    body: 'A physical voice interface for Hermes Agent. Less chat box, more thing in the room that you can interrupt while your hands are busy.',
+    title: 'Latency changes the product',
+    body: 'Voice and agent systems succeed or fail in the handoff: wake state, interruption, streaming, and the pause before action.',
   },
   {
-    title: 'Multi-speaker audiobook builder',
-    body: 'A tool for making audiobooks with different voices. The idea feels obvious to me; the models are still not quite good enough to disappear.',
+    title: 'Tools need rails',
+    body: 'When a model can touch files, browsers, APIs, or calendars, the important work becomes permissions, traces, retries, and bounded execution.',
   },
   {
-    title: 'Hermes-agent journalism bot',
-    body: 'An agent that watches city council meetings and local process. Public information is technically public, but a lot of it is still functionally buried.',
+    title: 'Local is a design constraint',
+    body: 'Private data, home servers, device loops, and local models change the architecture. They are not just deployment preferences.',
   },
 ]
 
 export const personalThesis = {
-  title: 'Almost ready for prime time',
-  body: 'I like working on the edge of what is possible, especially when the capability is real but still awkward. Agents need better senses, voice interfaces need to feel present, local models need practical workflows, and the boring details decide whether the magic survives contact with the world.',
+  title: 'Frontier voice AI systems',
+  body: 'I build voice AI systems where latency, local models, and agent workflows all matter. Speech should become useful action.',
   details: [
-    'The capability is newly possible.',
-    'The interface is starting to make sense.',
-    'The workflow pain is obvious and automatable.',
-    'The failure modes are still strange enough to require taste.',
+    'Low latency matters.',
+    'Local models matter.',
+    'Tool use needs rails.',
+    'Failure modes need traces.',
   ],
 }
 
@@ -86,8 +86,8 @@ export function dossierText() {
     personalThesis.title,
     personalThesis.body,
     ...personalThesis.details,
-    'Current fascinations:',
-    ...currentFascinations.flatMap((item) => [item.title, item.body]),
+    'Operating constraints:',
+    ...operatingConstraints.flatMap((item) => [item.title, item.body]),
     'Books Drew is thinking about:',
     ...books.flatMap((book) => [`${book.title} — ${book.author}`, book.note]),
     'Site tone:',

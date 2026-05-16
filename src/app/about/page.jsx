@@ -6,7 +6,7 @@ import { Container } from '@/components/Container'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import {
   books,
-  currentFascinations,
+  operatingConstraints,
   personalThesis,
 } from '@/content/personalDossier.mjs'
 import portraitImage from '@/images/avatar.jpg'
@@ -128,9 +128,9 @@ export default function About() {
         </section>
 
         <section className="dossier-frame bg-black/35 p-4 sm:p-6">
-          <p className="small-label text-sm text-rust">Current fascinations</p>
+          <p className="small-label text-sm text-rust">Operating constraints</p>
           <ul role="list" className="mt-4 space-y-4">
-            {currentFascinations.map((item) => (
+            {operatingConstraints.map((item) => (
               <li key={item.title}>
                 <h3 className="font-mono text-sm uppercase tracking-[0.18em] text-cream">
                   {item.title}

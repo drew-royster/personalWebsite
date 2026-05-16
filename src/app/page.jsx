@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import { WebGLDitherSignalPanel } from '@/components/WebGLDitherSignalPanel'
 import machineHands from '@/images/photos/retro/machine-hands.jpg'
-import { currentFascinations } from '@/content/personalDossier.mjs'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
@@ -18,7 +17,7 @@ const capabilities = [
   },
   {
     title: 'Tool workflows',
-    body: "A model that can't touch the system is mostly a text box with confidence. The useful version calls tools and leaves enough evidence to check.",
+    body: "A model that can't touch the system is mostly a text box with confidence. The useful version calls tools, stays bounded, and leaves enough evidence to check.",
   },
   {
     title: 'Local systems',
@@ -39,18 +38,21 @@ const caseStudies = [
     label: 'Staff Search',
     title: 'Search that had to survive messy people data',
     body: 'The interesting part was not search in the abstract. It was getting messy people data clean enough that an operator could ask a normal question and get useful candidates back.',
+    constraint: 'Constraint: translate fuzzy operator intent into inspectable retrieval and function-calling steps over messy structured and unstructured records.',
     href: '/articles/staff-search-rag-function-calling',
   },
   {
     label: 'Shaolin AI',
-    title: 'Teaching applied AI by building the thing',
-    body: 'Bootcamp work and applied projects around agents, function calling, and all the stuff that gets lost between a clean demo and something a team can actually ship.',
+    title: 'Applied AI product builds',
+    body: 'Rapid applied builds around agents, function calling, and all the stuff that gets lost between a clean demo and something a team can actually ship.',
+    constraint: 'Constraint: turn agent concepts into small working systems with clear boundaries, artifacts, and failure notes instead of slideware.',
     href: 'https://shaolin.ai',
   },
   {
     label: 'Smart Autofill',
     title: 'Forms are still where the pain hides',
     body: 'A browser extension experiment for using personal context to fill out forms. It sounds small, but forms are where a surprising amount of real workflow pain piles up.',
+    constraint: 'Constraint: make personal context useful inside a browser workflow without letting the model invent facts or overreach.',
     href: 'https://github.com/drew-royster/smart-autofill-extension',
   },
 ]
@@ -141,6 +143,11 @@ function CaseStudy({ item }) {
       <p className="small-label text-cream/42 text-xs">{item.label}</p>
       <h3 className="mt-4 text-xl font-semibold text-cream">{item.title}</h3>
       <p className="text-cream/62 mt-3 text-sm leading-6">{item.body}</p>
+      {item.constraint && (
+        <p className="mt-4 border-l border-rust/60 pl-3 font-mono text-xs leading-5 text-cream/48">
+          {item.constraint}
+        </p>
+      )}
       <span className="small-label mt-5 inline-block text-xs text-rust transition group-hover:text-cream">
         Open record
       </span>
@@ -161,17 +168,21 @@ export default async function Home() {
             <div className="relative mx-auto max-w-4xl">
               <div className="accent-rule mx-auto mb-5 h-px w-24" />
               <p className="small-label accent-kicker text-sm">
-                Drew Royster · Utah · practical AI systems
+                Drew Royster · Utah · frontier voice AI systems
               </p>
               <h1 className="mt-4 font-display text-5xl leading-[0.92] text-cream sm:text-7xl lg:text-8xl">
-                I like working on the edge of what’s possible.
+                I build frontier voice AI systems.
               </h1>
+              <p className="mx-auto mt-7 max-w-2xl font-serif text-lg leading-8 text-cream/74">
+                Low-latency interfaces, local models, and agent workflows that
+                turn speech into action.
+              </p>
               <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-0 text-left">
                 <CommandBlock step="1" title="Find the edge">
-                  real capability + awkward workflow
+                  voice + agents + local models + real workflow pain
                 </CommandBlock>
                 <CommandBlock step="2" title="Make it legible">
-                  context + tools + traces + something a person can run
+                  context + tools + traces + bounded actions
                 </CommandBlock>
               </div>
             </div>
@@ -204,42 +215,6 @@ export default async function Home() {
         </div>
       </Shell>
 
-      <Shell className="mt-10">
-        <div className="dossier-frame bg-black/40">
-          <div className="border-cream/18 border-b p-4 sm:p-6">
-            <p className="small-label text-sm text-rust">
-              Current fascinations
-            </p>
-            <h2 className="mt-4 max-w-3xl text-3xl font-semibold text-cream sm:text-4xl">
-              Things I work on.
-            </h2>
-            <p className="text-cream/64 mt-4 max-w-2xl font-serif text-base leading-7">
-              These are not all finished products. Some are just pressure
-              points. The capability is close enough to be real, but the shape
-              of the thing is still unsettled.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3">
-            {currentFascinations.map((item, index) => (
-              <article
-                key={item.title}
-                className="border-cream/18 border-t p-4 transition hover:bg-cream/[0.035] md:border-l md:[&:nth-child(-n+2)]:border-t-0 lg:[&:nth-child(-n+3)]:border-t-0"
-              >
-                <p className="small-label text-cream/36 text-xs">
-                  {String(index + 1).padStart(2, '0')}
-                </p>
-                <h3 className="mt-4 font-mono text-sm uppercase tracking-[0.18em] text-cream">
-                  {item.title}
-                </h3>
-                <p className="text-cream/62 mt-3 text-sm leading-6">
-                  {item.body}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </Shell>
-
       <Shell id="contact" className="mt-10">
         <div className="dossier-frame bg-black/40">
           <div className="border-cream/18 grid border-b lg:grid-cols-[0.72fr_1fr]">
@@ -250,8 +225,8 @@ export default async function Home() {
               </h2>
               <p className="text-cream/64 mt-5 max-w-xl font-serif text-base leading-7">
                 I am interested in the part after the impressive screenshot:
-                what context the system needs, what actions it can take, how a
-                human checks it, and whether it still works tomorrow.
+                what context the system needs, what actions it can take, what
+                evidence it leaves, and whether it still works tomorrow.
               </p>
             </div>
             <div className="border-cream/18 border-t lg:border-l lg:border-t-0">

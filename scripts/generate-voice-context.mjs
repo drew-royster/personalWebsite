@@ -143,7 +143,7 @@ async function main() {
       path: '/about',
       title: 'Personal site dossier',
       description:
-        'Drew Royster personal-site context: tone, almost-prime-time technology thesis, current fascinations, and books/marginalia.',
+        'Drew Royster personal-site context: tone, frontier voice AI thesis, operating constraints, and books/marginalia.',
       body: dossierText(),
       excerpt: toExcerpt(dossierText()),
     },

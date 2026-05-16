@@ -11,7 +11,7 @@ const projects = [
   {
     name: 'Shaolin AI',
     description:
-      'Helped build AI bootcamp material and applied projects around agents, function calling, and what teams can actually make once the keynote glow wears off.',
+      'Built applied agent and function-calling projects for rapid AI product sprints: small working systems, clearer boundaries, and artifacts teams could inspect after the keynote glow wore off.',
     link: { href: 'https://shaolin.ai', label: 'shaolin.ai' },
     backgroundColor: 'bg-cream',
     logo: logoShaolin,
@@ -19,7 +19,7 @@ const projects = [
   {
     name: 'The Anon',
     description:
-      'A staffing search application over structured and unstructured people data. The useful part was making the messy domain legible enough for normal language queries.',
+      'A staffing search application over structured and unstructured people data. The useful part was turning fuzzy operator intent into inspectable retrieval and function-calling steps.',
     link: { href: '/articles/staff-search-rag-function-calling', label: 'case note' },
     backgroundColor: 'bg-black',
     logo: logoTheAnon,
@@ -27,7 +27,7 @@ const projects = [
   {
     name: 'Smart Autofill',
     description:
-      'A Chrome extension experiment for form filling with personal context. Boring problem, but probably the right kind of boring.',
+      'A Chrome extension experiment for form filling with personal context: boring workflow pain, useful only if the model stays bounded and does not invent facts.',
     link: { href: 'https://github.com/drew-royster/smart-autofill-extension', label: 'github' },
     backgroundColor: 'bg-cream',
     logo: lightningLogo,
