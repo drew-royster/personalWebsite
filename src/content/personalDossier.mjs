@@ -1,30 +1,30 @@
 export const currentFascinations = [
   {
     title: 'Hermes-IoT / ESP32 Echo Pyramid',
-    body: 'A full-duplex physical device interface for Hermes Agent: less chat box, more agent you can actually talk to across a room.',
+    body: 'A physical voice interface for Hermes Agent. Less chat box, more thing in the room that you can interrupt while your hands are busy.',
   },
   {
     title: 'Multi-speaker audiobook builder',
-    body: 'A tool for making audiobooks with multiple voices. The direction is compelling; the models are not quite there yet.',
+    body: 'A tool for making audiobooks with different voices. The idea feels obvious to me; the models are still not quite good enough to disappear.',
   },
   {
     title: 'Targeted speaker enhancement for personal STT',
-    body: 'Personal speech extraction for better speech-to-text: preserve the enrolled speaker, suppress the rest, and keep the downstream transcript useful.',
+    body: 'Personal speech extraction for better transcripts. Preserve my voice, suppress everything else, and do not destroy the quiet parts where the actual sentence lives.',
   },
   {
     title: 'Hermes-agent journalism bot',
-    body: 'A local-civic monitoring agent that keeps an eye on city council meetings and turns boring public process into something easier to follow.',
+    body: 'An agent that watches city council meetings and local process. Public information is technically public, but a lot of it is still functionally buried.',
   },
 ]
 
 export const personalThesis = {
   title: 'Almost ready for prime time',
-  body: 'I like trying to skate where the puck is going to be: building with technology that is close enough to be useful, unfinished enough that the interfaces, workflows, and failure modes still need to be invented.',
+  body: 'I keep getting pulled toward technology that is almost useful. The model capability is real, the interface is starting to make sense, and the workflow pain is obvious, but the whole thing is still janky enough that taste matters.',
   details: [
-    'The model capability is newly possible.',
-    'The hardware or interface is starting to make sense.',
+    'The capability is newly possible.',
+    'The interface is starting to make sense.',
     'The workflow pain is obvious and automatable.',
-    'The tech is still janky enough that useful systems require taste.',
+    'The failure modes are still strange enough to require taste.',
   ],
 }
 
@@ -39,7 +39,7 @@ export const siteTone = {
     'generic full-stack developer resume',
   ],
   voice:
-    'Curious builder, practical systems person, slightly skeptical, taste-driven, interested in real workflows and unfinished edges.',
+    'Curious, practical, a little skeptical, and interested in the unfinished edge where a model becomes a system someone can actually use.',
 }
 
 export const books = [

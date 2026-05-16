@@ -5,33 +5,34 @@ import { WebGLDitherSignalPanel } from '@/components/WebGLDitherSignalPanel'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import machineHands from '@/images/photos/retro/machine-hands.jpg'
 import speechToAction from '@/images/photos/retro/speech-to-action.jpg'
+import { currentFascinations } from '@/content/personalDossier.mjs'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
 const capabilities = [
   {
-    title: 'Voice Interfaces',
-    body: 'Real-time speech, transcripts, turn-taking, interruptions, and handoffs that feel like software instead of a phone tree.',
+    title: 'Voice interfaces',
+    body: 'Speech is latency sensitive and weirdly unforgiving. A voice agent either feels present or it feels like a phone tree with better branding.',
   },
   {
-    title: 'Agent Runtime',
-    body: 'Process design, delegation, permissions, retries, and observability around model-driven work.',
+    title: 'Agent runtime',
+    body: 'The interesting part is usually not the model call. It is permissions, context, retries, delegation, logs, and what happens when the agent is wrong.',
   },
   {
-    title: 'Tool Workflows',
-    body: 'APIs, callbacks, webhooks, browser control, and deterministic rails around stochastic model behavior.',
+    title: 'Tool workflows',
+    body: 'Models are much more useful when they can touch the real system: APIs, browsers, webhooks, databases, calendars, files. Then you need rails.',
   },
   {
-    title: 'Local Systems',
-    body: 'Self-hosted model serving, private infrastructure, and practical deployments where the runtime matters as much as the demo.',
+    title: 'Local systems',
+    body: 'Some things should run close to you: local models, private data, self hosted infrastructure, and boring machines that keep working after the demo.',
   },
   {
     title: 'Automations',
-    body: 'Scheduled reports, unattended jobs, event listeners, and systems that keep moving after the chat window closes.',
+    body: 'A good automation is not a clever prompt. It is a small system that wakes up, checks the world, does the right thing, and leaves a trace.',
   },
   {
-    title: 'Evaluation Loops',
-    body: 'Small tests, traces, review surfaces, and failure notes that make AI work inspectable enough to trust.',
+    title: 'Evaluation loops',
+    body: 'If you cannot inspect it, you are mostly vibing. Tests, traces, review surfaces, and failure notes make agent work less magical and more useful.',
   },
 ]
 
@@ -39,30 +40,30 @@ const caseStudies = [
   {
     label: 'Staff Search',
     title: 'Natural language search over people data',
-    body: 'A RAG and function-calling application for finding candidates through plain-language staffing queries.',
+    body: 'A staffing search app where the hard part was not search in the abstract. It was making messy people data legible enough that an operator could ask a normal question and get useful candidates back.',
     href: '/articles/staff-search-rag-function-calling',
   },
   {
     label: 'Shaolin AI',
     title: 'Applied AI education and product builds',
-    body: 'Bootcamp work, agent demos, and applied engineering around what teams can actually build with models.',
+    body: 'Bootcamp work and applied projects around agents, function calling, and the gap between what a demo implies and what a team can actually ship.',
     href: 'https://shaolin.ai',
   },
   {
     label: 'Smart Autofill',
     title: 'Identity-aware form automation',
-    body: 'A browser extension experiment for using personal context and LLMs to complete forms with less friction.',
+    body: 'A browser extension experiment for using personal context to fill out forms. Forms are boring, but they are also where a lot of real workflow pain hides.',
     href: 'https://github.com/drew-royster/smart-autofill-extension',
   },
 ]
 
 const terminalLines = [
-  ['voice.input', 'caller asks for a concrete next step'],
-  ['transcript.stream', 'speech becomes inspectable state'],
-  ['context.load', 'constraints, data, permissions'],
-  ['agent.plan', 'choose tool path before action'],
-  ['tool.call', 'calendar, browser, webhook, database'],
-  ['handoff', 'summary delivered with traceable context'],
+  ['voice.input', 'say the messy version out loud'],
+  ['transcript.stream', 'turn speech into state we can inspect'],
+  ['context.load', 'pull the page, articles, notes, permissions'],
+  ['agent.plan', 'decide what should happen before touching tools'],
+  ['tool.call', 'browser, webhook, database, file, calendar'],
+  ['handoff', 'leave a trace a human can actually review'],
 ]
 
 function SocialLink({ icon: Icon, ...props }) {
@@ -128,7 +129,7 @@ function TerminalDemo() {
         ))}
       </div>
       <div className="mt-6 border-t border-cream/14 pt-4 font-mono text-xs text-cream/40">
-        status: working software, not a slide deck
+        status: useful enough to run, still strange enough to inspect
       </div>
     </div>
   )
@@ -204,24 +205,26 @@ export default async function Home() {
             <div className="relative mx-auto max-w-4xl">
               <div className="accent-rule mx-auto mb-5 h-px w-24" />
               <p className="small-label accent-kicker text-sm">
-                Independent AI systems builder · Utah
+                Drew Royster · Utah · practical AI systems
               </p>
               <h1 className="font-display mt-4 text-5xl leading-[0.92] text-cream sm:text-7xl lg:text-8xl">
-                Voice systems, tools, and agents that act.
+                I build with things that are almost useful.
               </h1>
               <p className="mx-auto mt-7 max-w-2xl font-serif text-lg leading-8 text-cream/74">
-                I build the connective tissue between speech, models, tools,
-                private infrastructure, and real-world action.
+                Models are good enough now that the interesting work has moved
+                into the seams: context, tools, voice, permissions, latency,
+                failure modes, and the parts of the workflow nobody bothered to
+                write down.
               </p>
               <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-0 text-left">
                 <CommandBlock
                   step="1"
-                  title="Build"
+                  title="Find the edge"
                 >
-                  speech + models + APIs + product workflow
+                  capability is real + workflow is still fuzzy
                 </CommandBlock>
-                <CommandBlock step="2" title="Ship">
-                  prototype + deployment + traces + handoff
+                <CommandBlock step="2" title="Make it legible">
+                  context + tools + traces + something a person can run
                 </CommandBlock>
               </div>
               <div className="mt-8 flex items-center justify-center gap-3">
@@ -245,7 +248,7 @@ export default async function Home() {
         <div className="dossier-frame border-t-0 bg-black/44">
           <div className="grid border-b border-cream/18 lg:grid-cols-[1fr_0.95fr]">
             <div className="p-4 lg:p-6">
-              <p className="small-label mb-4 text-xl text-cream">See It in Action</p>
+              <p className="small-label mb-4 text-xl text-cream">A small trace</p>
               <TerminalDemo />
             </div>
             <div className="border-t border-cream/18 lg:border-l lg:border-t-0">
@@ -253,7 +256,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="border-b border-cream/18 p-4">
-            <p className="small-label text-xl text-cream">Features</p>
+            <p className="small-label text-xl text-cream">Working materials</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3">
             {capabilities.map((item) => (
@@ -269,18 +272,51 @@ export default async function Home() {
         </div>
       </Shell>
 
+      <Shell className="mt-10">
+        <div className="dossier-frame bg-black/40">
+          <div className="border-b border-cream/18 p-4 sm:p-6">
+            <p className="small-label text-sm text-rust">Current fascinations</p>
+            <h2 className="mt-4 max-w-3xl text-3xl font-semibold text-cream sm:text-4xl">
+              The stuff I keep circling right now.
+            </h2>
+            <p className="mt-4 max-w-2xl font-serif text-base leading-7 text-cream/64">
+              These are not all finished products. Some are more like pressure
+              points. The capability is close enough to be real, but the shape
+              of the thing is still unsettled.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4">
+            {currentFascinations.map((item, index) => (
+              <article
+                key={item.title}
+                className="border-t border-cream/18 p-4 transition hover:bg-cream/[0.035] md:border-l md:[&:nth-child(-n+2)]:border-t-0 lg:[&:nth-child(-n+4)]:border-t-0"
+              >
+                <p className="small-label text-xs text-cream/36">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
+                <h3 className="mt-4 font-mono text-sm uppercase tracking-[0.18em] text-cream">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-cream/62">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </Shell>
+
       <Shell id="contact" className="mt-10">
         <div className="dossier-frame bg-black/40">
           <div className="grid border-b border-cream/18 lg:grid-cols-[0.72fr_1fr]">
             <div className="p-4 sm:p-6">
-              <p className="small-label text-sm text-rust">Work Records</p>
+              <p className="small-label text-sm text-rust">Work records</p>
               <h2 className="mt-4 max-w-xl text-3xl font-semibold text-cream sm:text-4xl">
-                Systems with a bias toward shipping.
+                Things that made the model touch the world.
               </h2>
               <p className="mt-5 max-w-xl font-serif text-base leading-7 text-cream/64">
-                The through-line is practical AI: get a model connected to the
-                right context, give it tools, put guardrails around action, and
-                leave the client with software they can run.
+                I am interested in the part after the impressive screenshot:
+                what context the system needs, what actions it is allowed to
+                take, how a human checks the work, and whether it still works
+                tomorrow.
               </p>
             </div>
             <div className="border-t border-cream/18 lg:border-l lg:border-t-0">
@@ -300,7 +336,7 @@ export default async function Home() {
           <div className="border-b border-cream/18 p-4 sm:p-6">
             <p className="small-label text-sm text-rust">Field Notes</p>
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold text-cream sm:text-4xl">
-              Notes from the edge of agents, interfaces, and useful software.
+              Notes from the fuzzy edge where models become software.
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4">
@@ -316,12 +352,13 @@ export default async function Home() {
           <div className="p-4 sm:p-6">
             <p className="small-label text-sm text-rust">Contact</p>
             <h2 className="mt-4 text-3xl font-semibold text-cream">
-              Bring a hard, weird AI system.
+              If you have a hard, weird system, send it over.
             </h2>
             <p className="mt-4 max-w-2xl font-serif text-base leading-7 text-cream/64">
-              Best fit: voice workflows, agent tooling, private model
-              infrastructure, automation glue, and product prototypes that need
-              someone comfortable across the whole stack.
+              I am usually most useful when the thing is half product problem,
+              half systems problem: voice workflows, agent tooling, private
+              model infrastructure, automation glue, or prototypes where the
+              boring failure modes matter.
             </p>
           </div>
           <div className="flex items-center border-t border-cream/18 p-4 md:border-l md:border-t-0 sm:p-6">

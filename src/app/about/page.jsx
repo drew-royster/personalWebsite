@@ -39,7 +39,7 @@ function MailIcon(props) {
 export const metadata = {
   title: 'About',
   description:
-    'I am Drew Royster. I live in Utah and build practical AI systems.',
+    'Drew Royster builds practical AI systems, voice interfaces, agents, and tools that make fuzzy workflows more legible.',
 }
 
 export default function About() {
@@ -50,28 +50,29 @@ export default function About() {
           <div className="border-b border-cream/18 p-4 sm:p-6 lg:border-b-0 lg:border-r">
             <p className="small-label text-sm text-cream/42">Operator Record</p>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold text-cream sm:text-5xl">
-              I am Drew Royster. I build practical AI systems across the whole stack.
+              I’m Drew Royster. I like making fuzzy systems legible enough to run.
             </h1>
             <div className="mt-8 space-y-7 font-serif text-base leading-7 text-cream/70">
               <p>
-                One of my earliest exposures to coding was in high school when
-                the first Android phone came out. I wanted to use it, but my
-                family was on AT&T and the phone was a T-Mobile exclusive. That
-                led me into APNs, CyanogenMod, custom firmware, and the habit of
-                taking systems apart until they made sense.
+                One of my first real coding rabbit holes started with the first
+                Android phone. I wanted one, but my family was on AT&T and the
+                phone was stuck on T-Mobile. That somehow turned into APNs,
+                CyanogenMod, custom firmware, and the habit of taking a system
+                apart until the weird parts stopped feeling like magic.
               </p>
               <p>
-                Since then I have worked across large companies, small startups,
-                web applications, databases, platforms, and machine learning.
-                Lately my focus has been the place where stochastic models meet
-                deterministic software: voice interfaces, agents, tool-calling,
-                private infrastructure, and real workflows.
+                Lately I keep ending up where stochastic models run into normal
+                software. Voice agents, tool calling, private infrastructure,
+                local models, browser automation, transcripts, permissions. The
+                model is rarely the whole story. The hard part is making the
+                problem legible enough that the model can do something useful
+                without pretending it knows more than it does.
               </p>
               <p>
                 I am most useful when a project needs taste and implementation
-                in the same person: someone who can reason about the product,
-                wire up the APIs, debug the runtime, and leave behind software
-                the team can actually operate.
+                in the same person. Someone has to notice what the demo is
+                hiding, wire up the boring pieces, and leave behind something a
+                team can actually operate.
               </p>
             </div>
           </div>
@@ -110,7 +111,7 @@ export default function About() {
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[0.58fr_0.42fr]">
         <section className="dossier-frame bg-black/35 p-4 sm:p-6">
-          <p className="small-label text-sm text-rust">Field note</p>
+          <p className="small-label text-sm text-rust">A recurring problem</p>
           <h2 className="mt-3 text-2xl font-semibold text-cream">
             {personalThesis.title}
           </h2>
@@ -146,7 +147,7 @@ export default function About() {
           <div>
             <p className="small-label text-sm text-rust">Marginalia</p>
             <h2 className="mt-3 text-2xl font-semibold text-cream">
-              Books I’ve been thinking about
+              The shelf, not the canon
             </h2>
           </div>
           <Link

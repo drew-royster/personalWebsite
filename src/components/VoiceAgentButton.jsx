@@ -9,7 +9,7 @@ import {
 } from '@/lib/voice/client'
 import { BrowserRealtimeVoiceClient } from '@/lib/voice/realtime'
 
-const idleCopy = 'Ask Drew'
+const idleCopy = 'Ask the site'
 
 function StatusDot({ tone }) {
   const color =
@@ -25,7 +25,7 @@ function StatusDot({ tone }) {
 export function VoiceAgentButton() {
   const [open, setOpen] = useState(false)
   const [status, setStatus] = useState('idle')
-  const [message, setMessage] = useState('Loaded with this page and Drew\'s articles.')
+  const [message, setMessage] = useState('Loaded with this page, the articles, and the marginalia.')
   const [pageContext, setPageContext] = useState(null)
   const [siteContext, setSiteContext] = useState([])
   const [session, setSession] = useState(null)
@@ -58,7 +58,7 @@ export function VoiceAgentButton() {
 
         setSiteContext(context.results || [])
         setStatus('context-ready')
-        setMessage('Site context loaded. Ready to start once xAI credentials are wired.')
+        setMessage('Context loaded. Voice is waiting on provider credentials.')
       } catch (loadError) {
         setError(loadError.message)
         setStatus('error')
@@ -86,7 +86,7 @@ export function VoiceAgentButton() {
         session: prepared,
         onStatus: (nextStatus) => {
           setStatus(nextStatus)
-          if (nextStatus === 'connected') setMessage('Realtime socket connected. Listening pipeline is live.')
+          if (nextStatus === 'connected') setMessage('Socket connected. Now the weird part starts.')
           if (nextStatus === 'setup-required') setMessage(prepared.message)
           if (nextStatus === 'closed') setMessage('Voice session closed.')
         },
@@ -108,7 +108,7 @@ export function VoiceAgentButton() {
 
       await client.requestMicrophone()
       setStatus('listening')
-      setMessage('Microphone permission granted. Realtime socket is opening.')
+      setMessage('Microphone is allowed. Opening the realtime socket.')
     } catch (sessionError) {
       setError(sessionError.message)
       setStatus('error')
@@ -121,7 +121,7 @@ export function VoiceAgentButton() {
     voiceClientRef.current?.close()
     voiceClientRef.current = null
     setStatus('context-ready')
-    setMessage('Voice session stopped. Site context is still loaded.')
+    setMessage('Voice stopped. The site context is still loaded.')
   }
 
   async function handleEasterEgg() {
@@ -143,8 +143,8 @@ export function VoiceAgentButton() {
         <div className="w-[min(calc(100vw-2rem),24rem)] border border-cream/18 bg-black/88 p-4 text-sm shadow-2xl shadow-black/60 backdrop-blur-md">
           <div className="flex items-center justify-between gap-4 border-b border-cream/12 pb-3">
             <div>
-              <p className="small-label text-[0.65rem] text-rust">Drew.Systems Voice Interface</p>
-              <h2 className="mt-1 font-mono text-base text-cream">Ask this site anything</h2>
+              <p className="small-label text-[0.65rem] text-rust">Drew.Systems site agent</p>
+              <h2 className="mt-1 font-mono text-base text-cream">Ask what is already here</h2>
             </div>
             <StatusDot tone={statusTone} />
           </div>

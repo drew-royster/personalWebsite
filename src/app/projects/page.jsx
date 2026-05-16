@@ -11,7 +11,7 @@ const projects = [
   {
     name: 'Shaolin AI',
     description:
-      'Helped build an AI bootcamp and applied projects around agents, function calling, and practical model workflows.',
+      'Helped build AI bootcamp material and applied projects around agents, function calling, and what teams can actually make once the keynote glow wears off.',
     link: { href: 'https://shaolin.ai', label: 'shaolin.ai' },
     backgroundColor: 'bg-cream',
     logo: logoShaolin,
@@ -19,7 +19,7 @@ const projects = [
   {
     name: 'The Anon',
     description:
-      'Staffing search application that lets operators find people with natural-language search over structured and unstructured data.',
+      'A staffing search application over structured and unstructured people data. The useful part was making the messy domain legible enough for normal language queries.',
     link: { href: '/articles/staff-search-rag-function-calling', label: 'case note' },
     backgroundColor: 'bg-black',
     logo: logoTheAnon,
@@ -27,7 +27,7 @@ const projects = [
   {
     name: 'Smart Autofill',
     description:
-      'Chrome extension experiment that uses personal context and LLMs to fill out forms with less manual repetition.',
+      'A Chrome extension experiment for form filling with personal context. Boring problem, but probably the right kind of boring.',
     link: { href: 'https://github.com/drew-royster/smart-autofill-extension', label: 'github' },
     backgroundColor: 'bg-cream',
     logo: lightningLogo,
@@ -35,7 +35,7 @@ const projects = [
   {
     name: 'Canvas File Sync',
     description:
-      'Electron app from college that synced Canvas course files into Google Drive before the ecosystem made that easy.',
+      'A college Electron app that synced Canvas course files into Google Drive before that felt like an obvious thing software should already do.',
     link: { href: 'https://github.com/drew-royster/canvasFileSync', label: 'github' },
     backgroundColor: 'bg-cream',
     logo: cfsLogo,
@@ -76,8 +76,8 @@ export const metadata = {
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Projects and systems I have worked on."
-      intro="Some are active, some are old, but they show the direction: useful AI, search, automation, and tools that connect to real work."
+      title="Projects and systems I keep learning from."
+      intro="Some are active, some are old, and some were mostly useful because they made a fuzzy problem easier to see. That is usually the pattern I care about."
     >
       <ul role="list" className="grid border-b border-cream/18 sm:grid-cols-2 lg:grid-cols-4">
         {projects.map((project, index) => (
