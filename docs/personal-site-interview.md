@@ -52,10 +52,6 @@ Candidate phrasing:
 - **Multi-speaker audiobook builder**
   - Interesting direction, but models are not quite there yet.
 
-- **Targeted speaker enhancement for personal STT**
-  - Personal speech extraction / ClearMic-ish work.
-  - Better speech-to-text by enhancing the enrolled speaker.
-
 - **Hermes-agent journalism bot**
   - Bot to keep an eye on city council meetings / local civic processes.
   - Civic monitoring / local journalism angle.

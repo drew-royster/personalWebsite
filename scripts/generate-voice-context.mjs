@@ -48,9 +48,10 @@ async function buildPages() {
     {
       path: '/',
       title: 'Voice Interfaces',
-      description: 'Homepage for Drew Royster: voice systems, tool workflows, agents, local systems, automations, and evaluation loops.',
+      description:
+        'Homepage for Drew Royster: voice systems, agents, local infrastructure, and the places where models have to touch real workflows.',
       body:
-        'Drew builds practical AI systems where stochastic models meet deterministic software: real-time voice interfaces, agent runtimes, tool workflows, local systems, automations, and evaluation loops. The homepage frames the work as software that survives contact with real workflows rather than demos or slideware.',
+        'Drew Royster works on practical AI systems at the awkward stage where the model is good enough to be useful but the workflow is still messy. The homepage covers voice interfaces, agent runtimes, tool workflows, local systems, automations, evaluation loops, and projects where the model had to do something outside the chat box.',
     },
     {
       path: '/about',

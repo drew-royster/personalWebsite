@@ -54,14 +54,13 @@ function Wordmark({ className }) {
   return (
     <Link
       href="/"
-      aria-label="Drew Royster home"
+      aria-label="Drew home"
       className={clsx(
         'font-display block text-3xl leading-[0.86] text-cream transition hover:text-white sm:text-4xl',
         className,
       )}
     >
       <span className="block">DREW</span>
-      <span className="block">ROYSTER</span>
     </Link>
   )
 }
@@ -149,7 +148,7 @@ export function Header() {
   return (
     <header className="relative z-50 mx-auto w-full max-w-7xl px-7 pt-7 sm:px-8 lg:px-8">
       <div className="dossier-frame bg-ink/70 backdrop-blur">
-        <div className="grid grid-cols-[1fr_auto] md:grid-cols-[1.35fr_repeat(6,minmax(4.9rem,0.66fr))_1.02fr_0.78fr]">
+        <div className="grid grid-cols-[1fr_auto] md:grid-cols-[1.35fr_repeat(6,minmax(4.9rem,0.66fr))_1.02fr]">
           <div className="flex min-h-24 items-center border-r border-cream/18 px-4 py-4 sm:px-5">
             <Wordmark />
           </div>
@@ -178,12 +177,6 @@ export function Header() {
               />
             </div>
           </div>
-          <Link
-            href="/#contact"
-            className="nav-cell hidden min-h-16 items-center px-4 py-3 text-sm uppercase text-cream/72 transition hover:bg-rust/[0.055] hover:text-rust md:flex"
-          >
-            Contact
-          </Link>
         </div>
       </div>
     </header>

@@ -8,10 +8,6 @@ export const currentFascinations = [
     body: 'A tool for making audiobooks with different voices. The idea feels obvious to me; the models are still not quite good enough to disappear.',
   },
   {
-    title: 'Targeted speaker enhancement for personal STT',
-    body: 'Personal speech extraction for better transcripts. Preserve my voice, suppress everything else, and do not destroy the quiet parts where the actual sentence lives.',
-  },
-  {
     title: 'Hermes-agent journalism bot',
     body: 'An agent that watches city council meetings and local process. Public information is technically public, but a lot of it is still functionally buried.',
   },
