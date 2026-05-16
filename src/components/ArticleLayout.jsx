@@ -27,7 +27,7 @@ export function ArticleLayout({ article, children }) {
 
   return (
     <Container className="mt-16 lg:mt-32">
-      <div className="dossier-frame bg-black/40 p-4 sm:p-6 xl:relative">
+      <div className="dossier-frame bg-black/68 p-4 sm:p-6 xl:relative">
         <div className="mx-auto max-w-2xl">
           {previousPathname && (
             <button

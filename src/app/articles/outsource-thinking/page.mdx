@@ -1,0 +1,48 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import yacine from './yacine.png'
+import bauer from './john-bauer.png'
+import accountability from './accountability.jpeg'
+
+export const article = {
+  author: 'Drew Royster',
+  date: '2026-05-16',
+  title: "What can't an agent do?",
+  description: 'New unlocks every day, but are there timeless constraints?',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<Image src={yacine} alt="Yacine, you can outsource your thinking, but you cannot outsource your understanding" />
+
+People are frequently asking "what jobs are safe with AI?" and for knowledge work it doesn't feel like any are "safe" long-term. If your job is to recognize patterns and then apply workflows to them well, that's basically a `skill` plus `tools`. That's it. There's been a lot of, in my opinion, cope about so-called "taste" and "human touch." But when it comes to art, I don't care about that much, especially for the price. I can tell GPT Image 2 to copy the style of John Bauer and it'll make any image I want as if it were painted by him. I can mix and match styles and create unique artworks that never would have existed.
+
+<Image src={bauer} alt="John Bauer Star Wars poster" />
+```
+make an original Star Wars movie poster in the style of John Bauer
+```
+
+As a consumer it's hard to make the case to pay so much more for so much less than what you can get from a model.
+
+With that said, the ceiling of what is possible with AI artwork is just out of my reach. I don't even know what to ask. I can't describe in enough detail what exactly I'm picturing in my mind with the level of clarity that an artist would be able to. I simply don't see what they can see when we look at the same artwork. My understanding of painting and visual arts fundamentally limits me from using the capabilities of something that is almost infinitely capable.
+
+This brings us to the Yacine tweet. Comprehension is the bottleneck. In a SaaS company there's only so much that an engineer can own, and that's limited by his ability to understand it in depth. Mark Zuckerberg does not have a good mental model of Meta's codebase at this point; he's distributed his responsibility out. It's not obvious to me that an agent can "own" anything. So how can we increase leverage without outsourcing our understanding? I have some sloppy answers, but I think we are all trying to figure this out together. The CEO might want engineers shipping 24/7, but if they're going to be on the hook for outages, bugs, etc., they're going to need to understand it enough to sign off on it. CodeRabbit giving it a thumbs up doesn't matter. Who is going to take the call when the Kafka queue fills up in the middle of the night and diabetics aren't getting notified that their blood sugar levels are too high?
+
+<Image src={accountability} alt="Accountability" />
+
+Reviewing code is __traditionally__ slower than writing it. Reviewing agent code is a bit faster because you prompted it, so you likely know the rough shape of what it's doing, but it's just not the same as having written it yourself. Back in the olden days I remember getting a bug report and seeing the exact line of code in my mind's eye before the person had finished explaining the issue. Things are not quite the same now, and I don't think I'm alone.
+
+A couple ideas
+
+* architecture-diagrams
+* UML diagrams - where applicable
+* paying close attention to schemas/settings/configs/knobs - I'm expecting models not to mess up on a `for` loop, but they often do fallbacks and conservative settings that mask failures in obscurity. Surfacing those is important.
+* ask another model to explain the implementation - a different perspective is sometimes really helpful
+* visual metaphors with imagegen - out there, probably not useful
+* mnemonic devices - even more out there, but maybe weirdly useful?
+
+If human attention is the main bottleneck, then burning tokens to deepen understanding seems to be well worth the investment. You'll never understand the feature better than when you submit that PR, so it's important to really lock that in and also leave a clean and obvious breadcrumb for yourself in the future.

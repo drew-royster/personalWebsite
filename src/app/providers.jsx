@@ -10,6 +10,7 @@ function usePrevious(value) {
     ref.current = value
   }, [value])
 
+  // eslint-disable-next-line react-hooks/refs
   return ref.current
 }
 
