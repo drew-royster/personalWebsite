@@ -43,9 +43,9 @@ const caseStudies = [
   },
   {
     label: 'Shaolin AI',
-    title: 'Applied AI product builds',
-    body: 'Rapid applied builds around agents, function calling, and all the stuff that gets lost between a clean demo and something a team can actually ship.',
-    constraint: 'Constraint: turn agent concepts into small working systems with clear boundaries, artifacts, and failure notes instead of slideware.',
+    title: 'Learning the fundamentals by training models',
+    body: 'A bootcamp I attended as both a student and substitute teacher to upskill, where I trained models, got much more comfortable with PyTorch, and built a movie recommender algorithm for my capstone.',
+    constraint: 'Constraint: get past AI product demos and understand the machinery directly enough to train, debug, and explain small models.',
     href: 'https://shaolin.ai',
   },
   {
@@ -178,8 +178,8 @@ export default async function Home() {
                 turn speech into action.
               </p>
               <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-0 text-left">
-                <CommandBlock step="1" title="Find the edge">
-                  voice + agents + local models + real workflow pain
+                <CommandBlock step="1" title="Find the frontier">
+                  {'new capabilities > more autonomy > real work'}
                 </CommandBlock>
                 <CommandBlock step="2" title="Make it legible">
                   context + tools + traces + bounded actions
@@ -220,14 +220,6 @@ export default async function Home() {
           <div className="border-cream/18 grid border-b lg:grid-cols-[0.72fr_1fr]">
             <div className="p-4 sm:p-6">
               <p className="small-label text-sm text-rust">Work records</p>
-              <h2 className="mt-4 max-w-xl text-3xl font-semibold text-cream sm:text-4xl">
-                Projects where the model had to do something.
-              </h2>
-              <p className="text-cream/64 mt-5 max-w-xl font-serif text-base leading-7">
-                I am interested in the part after the impressive screenshot:
-                what context the system needs, what actions it can take, what
-                evidence it leaves, and whether it still works tomorrow.
-              </p>
             </div>
             <div className="border-cream/18 border-t lg:border-l lg:border-t-0">
               <ImagePlate image={machineHands} label="tools and machines" />
@@ -245,9 +237,6 @@ export default async function Home() {
         <div className="dossier-frame bg-black/40">
           <div className="border-cream/18 border-b p-4 sm:p-6">
             <p className="small-label text-sm text-rust">Field Notes</p>
-            <h2 className="mt-4 max-w-3xl text-3xl font-semibold text-cream sm:text-4xl">
-              Stuff I’ve been trying to understand in public.
-            </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4">
             {articles.map((article, index) => (
