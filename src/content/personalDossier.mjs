@@ -19,7 +19,7 @@ export const currentFascinations = [
 
 export const personalThesis = {
   title: 'Almost ready for prime time',
-  body: 'I keep getting pulled toward technology that is almost useful. The model capability is real, the interface is starting to make sense, and the workflow pain is obvious, but the whole thing is still janky enough that taste matters.',
+  body: 'I like working on the edge of what is possible, especially when the capability is real but still awkward. Agents need better senses, voice interfaces need to feel present, local models need practical workflows, and the boring details decide whether the magic survives contact with the world.',
   details: [
     'The capability is newly possible.',
     'The interface is starting to make sense.',

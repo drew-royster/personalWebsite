@@ -208,13 +208,14 @@ export default async function Home() {
                 Drew Royster · Utah · practical AI systems
               </p>
               <h1 className="font-display mt-4 text-5xl leading-[0.92] text-cream sm:text-7xl lg:text-8xl">
-                I build with things that are almost useful.
+                I like working on the edge of what’s possible.
               </h1>
               <p className="mx-auto mt-7 max-w-2xl font-serif text-lg leading-8 text-cream/74">
-                Models are good enough now that the interesting work has moved
-                into the seams: context, tools, voice, permissions, latency,
-                failure modes, and the parts of the workflow nobody bothered to
-                write down.
+                Especially when the new capability is real but still awkward:
+                agents that need better senses, voice interfaces that need to
+                feel present, local models that need practical workflows, and
+                systems where the boring details decide whether the magic
+                survives contact with the world.
               </p>
               <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-0 text-left">
                 <CommandBlock
