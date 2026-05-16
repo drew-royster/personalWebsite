@@ -211,7 +211,7 @@ export default async function Home() {
               Current fascinations
             </p>
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold text-cream sm:text-4xl">
-              The stuff I keep circling right now.
+              Things I work on.
             </h2>
             <p className="text-cream/64 mt-4 max-w-2xl font-serif text-base leading-7">
               These are not all finished products. Some are just pressure
