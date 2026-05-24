@@ -1,6 +1,6 @@
 import { Container } from '@/components/Container'
 
-export function SimpleLayout({ title, intro, children }) {
+export function SimpleLayout({ title, intro, children, unpadded = false }) {
   return (
     <Container className="mt-10 sm:mt-14">
       <div className="dossier-frame bg-black/40">
@@ -13,7 +13,11 @@ export function SimpleLayout({ title, intro, children }) {
             {intro}
           </p>
         </header>
-        {children && <div className="p-4 sm:p-6">{children}</div>}
+        {children && (
+          <div className={unpadded ? '' : 'p-4 sm:p-6'}>
+            {children}
+          </div>
+        )}
       </div>
     </Container>
   )

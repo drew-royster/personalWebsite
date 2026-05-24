@@ -18,19 +18,21 @@ test('normalizeRealtimeSession detects setup-required placeholder sessions', () 
   assert.equal(normalized.setupRequired, true)
   assert.equal(normalized.websocketUrl, 'wss://api.x.ai/v1/realtime')
   assert.equal(normalized.instructions, 'hello')
+  assert.equal(normalized.voice, 'ara')
 })
 
 test('normalizeRealtimeSession extracts common ephemeral token shapes', () => {
   const tokenShapes = [
     { session: { client_secret: { value: 'tok-a' } } },
     { session: { client_secret: 'tok-b' } },
+    { session: { value: 'tok-e' } },
     { session: { ephemeral_token: 'tok-c' } },
     { session: { token: 'tok-d' } },
   ]
 
   assert.deepEqual(
     tokenShapes.map((shape) => normalizeRealtimeSession(shape).token),
-    ['tok-a', 'tok-b', 'tok-c', 'tok-d'],
+    ['tok-a', 'tok-b', 'tok-e', 'tok-c', 'tok-d'],
   )
 })
 

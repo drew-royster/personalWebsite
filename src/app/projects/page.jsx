@@ -44,7 +44,7 @@ const projects = [
 
 function Project({ project, index }) {
   return (
-    <li className="border-t border-cream/18 p-4 transition hover:bg-cream/[0.035] sm:p-5 sm:border-l sm:[&:nth-child(-n+2)]:border-t-0 lg:[&:nth-child(-n+4)]:border-t-0">
+    <li className="border-t border-cream/18 p-4 transition hover:bg-cream/[0.035] sm:p-6 sm:border-l sm:[&:nth-child(2n+1)]:border-l-0 sm:[&:nth-child(-n+2)]:border-t-0 lg:border-l lg:[&:nth-child(4n+1)]:border-l-0 lg:[&:nth-child(-n+4)]:border-t-0">
       <Link href={project.link.href} className="group block">
         <div className="flex items-start justify-between gap-4">
           <div
@@ -78,8 +78,9 @@ export default function Projects() {
     <SimpleLayout
       title="Projects and systems I keep learning from."
       intro="Some are active, some are old, and some were mostly useful because they made a fuzzy problem easier to see. That is usually the pattern I care about."
+      unpadded
     >
-      <ul role="list" className="grid border-b border-cream/18 sm:grid-cols-2 lg:grid-cols-4">
+      <ul role="list" className="grid sm:grid-cols-2 lg:grid-cols-4">
         {projects.map((project, index) => (
           <Project key={project.name} project={project} index={index} />
         ))}

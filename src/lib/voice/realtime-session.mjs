@@ -3,6 +3,7 @@ export function normalizeRealtimeSession(rawSession = {}) {
   const token =
     session?.client_secret?.value ||
     session?.client_secret ||
+    session?.value ||
     session?.ephemeral_token ||
     session?.token ||
     session?.access_token ||
@@ -15,6 +16,7 @@ export function normalizeRealtimeSession(rawSession = {}) {
     websocketUrl: rawSession.websocketUrl || session?.websocketUrl || session?.url || null,
     token,
     instructions: rawSession.instructions || session?.instructions || '',
+    voice: rawSession.voice || session?.voice || 'ara',
     raw: rawSession,
   }
 }

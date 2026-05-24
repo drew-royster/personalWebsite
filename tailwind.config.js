@@ -20,8 +20,8 @@ module.exports = {
       },
       fontFamily: {
         display: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
-        serif: ['Georgia', 'Times New Roman', 'serif'],
-        mono: ['Courier Prime', 'Courier New', 'monospace'],
+        serif: ['var(--font-lora)', 'Georgia', 'Times New Roman', 'serif'],
+        mono: ['var(--font-courier-prime)', 'Courier Prime', 'Courier New', 'monospace'],
       },
     },
     fontSize: {

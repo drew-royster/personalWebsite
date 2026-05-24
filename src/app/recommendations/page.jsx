@@ -1,25 +1,34 @@
-import { Card } from '@/components/Card'
-import { Section } from '@/components/Section'
 import { SimpleLayout } from '@/components/SimpleLayout'
 
-function ToolsSection({ children, ...props }) {
+function ToolsSection({ title, children }) {
   return (
-    <Section {...props}>
-      <ul role="list" className="space-y-16">
+    <section className="grid gap-4 border-t border-cream/18 p-4 first:border-t-0 sm:p-6 sm:grid-cols-[0.22fr_0.78fr]">
+      <h2 className="font-mono text-xs uppercase tracking-[0.22em] text-rust/80">
+        {title}
+      </h2>
+      <ul role="list" className="divide-y divide-cream/10 -mt-4 sm:mt-0">
         {children}
       </ul>
-    </Section>
+    </section>
   )
 }
 
 function Tool({ title, href, children }) {
   return (
-    <Card as="li" className="border-t border-cream/18 pt-6 first:border-t-0 first:pt-0">
-      <Card.Title as="h3" href={href}>
-        {title}
-      </Card.Title>
-      <Card.Description>{children}</Card.Description>
-    </Card>
+    <li className="py-5 first:pt-0 last:pb-0">
+      <h3 className="text-base font-semibold text-cream">
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-rust transition">
+            {title}
+          </a>
+        ) : (
+          title
+        )}
+      </h3>
+      <p className="mt-2.5 text-sm leading-6 text-cream/62">
+        {children}
+      </p>
+    </li>
   )
 }
 
@@ -33,8 +42,9 @@ export default function Uses() {
     <SimpleLayout
       title="Software I use, gadgets I love, and other things I recommend."
       intro="What helps me ship stuff fast and sustainably."
+      unpadded
     >
-      <div className="space-y-20">
+      <div className="divide-y divide-cream/18">
         <ToolsSection title="Development tools">
           <Tool title="Jetbrains">
             I know a lot of vim bindings and admire the people who use neovim, but jetbrains products are just so polished. I&#39;ve been using them for years and they&#39;ve never let me down. Datagrip especially is by far the best database administrative tool. It&#39;s well worth the money. Silly things like ts-server crashing on vs-code just doesn&#39;t happen on Webstorm. The new ai features are underappreciated too.

@@ -58,7 +58,7 @@ export function VoiceAgentButton() {
 
         setSiteContext(context.results || [])
         setStatus('context-ready')
-        setMessage('Context loaded. Voice is waiting on provider credentials.')
+        setMessage('Context loaded. Voice is ready to start.')
       } catch (loadError) {
         setError(loadError.message)
         setStatus('error')
@@ -87,6 +87,7 @@ export function VoiceAgentButton() {
         onStatus: (nextStatus) => {
           setStatus(nextStatus)
           if (nextStatus === 'connected') setMessage('Socket connected. Now the weird part starts.')
+          if (nextStatus === 'listening') setMessage('Microphone is streaming to xAI realtime.')
           if (nextStatus === 'setup-required') setMessage(prepared.message)
           if (nextStatus === 'closed') setMessage('Voice session closed.')
         },
@@ -97,6 +98,8 @@ export function VoiceAgentButton() {
         onError: () => setError('Realtime socket error. Check provider URL/token shape.'),
       })
 
+      setMessage('Allow microphone access to start the xAI realtime socket.')
+      await client.requestMicrophone()
       const connection = client.connect()
       voiceClientRef.current = client
 
@@ -106,9 +109,7 @@ export function VoiceAgentButton() {
         return
       }
 
-      await client.requestMicrophone()
-      setStatus('listening')
-      setMessage('Microphone is allowed. Opening the realtime socket.')
+      setMessage('Microphone is allowed. Waiting for xAI session confirmation.')
     } catch (sessionError) {
       setError(sessionError.message)
       setStatus('error')
