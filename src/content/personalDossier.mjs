@@ -42,7 +42,7 @@ export const books = [
   {
     title: 'That Hideous Strength',
     author: 'C. S. Lewis',
-    note: 'Weird and good in the way only C. S. Lewis can be. His power of discernment — his familiarity with the nuances of motivations and actions — feels beyond most people today. Valuable because Lewis simply sees more than we do.',
+    note: 'Weird and good in the way only C. S. Lewis can be. His power of discernment, his familiarity with the nuances of motivations and actions, feels beyond most people today. Valuable because Lewis simply sees more than we do.',
   },
   {
     title: 'Watership Down',
