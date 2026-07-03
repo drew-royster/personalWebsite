@@ -1,6 +1,5 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { VoiceAgentButton } from '@/components/VoiceAgentButton'
 
 export function Layout({ children }) {
   return (
@@ -17,7 +16,6 @@ export function Layout({ children }) {
         <Header />
         <main className="flex-auto">{children}</main>
         <Footer />
-        <VoiceAgentButton />
       </div>
     </>
   )

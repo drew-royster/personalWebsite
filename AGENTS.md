@@ -4,9 +4,8 @@ This repository is a human-readable and agent-readable personal site. The goal i
 
 ## Product direction
 
-- Voice-first over form-first: the site should increasingly support a visitor asking questions out loud and receiving grounded answers from Drew's public writing/context.
-- Human-first too: pages should still be readable, beautiful, and interesting without the voice agent.
-- Agent-readable: keep stable routes, clear metadata, `public/llms.txt`, `public/voice-context.json`, and direct summaries of what each page contains.
+- Human-first: pages should be readable, beautiful, and interesting.
+- Agent-readable: keep stable routes, clear metadata, `public/llms.txt`, and direct summaries of what each page contains.
 - Personal, not salesy: no aggressive CTAs, funnels, or generic portfolio claims.
 
 ## Voice and tone
@@ -40,10 +39,8 @@ Current accepted palette:
 
 Future redesign direction:
 
-- modern voice-first interface
-- clear page context for the voice agent
 - subtle audio/waveform/orb/device affordances
-- fewer generic portrait/image treatments if they do not support the voice-first concept
+- fewer generic portrait/image treatments if they do not support the dossier concept
 
 ## Content sources
 
@@ -51,7 +48,6 @@ Future redesign direction:
 - `src/app/articles/*/page.mdx` — public writing.
 - `src/app/about/page.jsx` — origin story, current interests, selected books.
 - `src/app/books/page.jsx` — books/marginalia page.
-- `scripts/generate-voice-context.mjs` — builds `public/voice-context.json` for site agent context.
 - `docs/personal-site-interview.md` — raw interview notes; do not treat as polished copy.
 
 ## Implementation rules for future agents
@@ -59,6 +55,5 @@ Future redesign direction:
 1. Keep the site readable by humans and machines.
 2. Update `public/llms.txt` when adding/removing major routes.
 3. Update `src/content/personalDossier.mjs` rather than scattering personal-dossier facts.
-4. Regenerate voice context with `npm run voice-context` after content changes.
-5. Run `npm run lint`, `npm test`, and `npm run build` before calling work complete.
-6. Do not invent biographical/professional claims. Use the site content or ask Drew.
+4. Run `npm run lint`, `npm test`, and `npm run build` before calling work complete.
+5. Do not invent biographical/professional claims. Use the site content or ask Drew.
