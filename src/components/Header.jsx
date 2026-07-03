@@ -16,8 +16,6 @@ const navItems = [
   ['About', '/about'],
   ['Articles', '/articles'],
   ['Projects', '/projects'],
-  ['Books', '/books'],
-  ['Talks', '/appearances'],
   ['Uses', '/recommendations'],
 ]
 
@@ -148,7 +146,7 @@ export function Header() {
   return (
     <header className="relative z-50 mx-auto w-full max-w-7xl px-7 pt-7 sm:px-8 lg:px-8">
       <div className="dossier-frame bg-ink/70 backdrop-blur">
-        <div className="grid grid-cols-[1fr_auto] md:grid-cols-[1.35fr_repeat(6,minmax(4.9rem,0.66fr))_1.02fr]">
+        <div className="grid grid-cols-[1fr_auto] md:grid-cols-[1.35fr_repeat(4,minmax(4.9rem,0.66fr))_1.02fr]">
           <div className="flex min-h-24 items-center border-r border-cream/18 px-4 py-4 sm:px-5">
             <Wordmark />
           </div>

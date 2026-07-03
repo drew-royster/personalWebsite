@@ -6,6 +6,13 @@ const nextConfig = {
   outputFileTracingIncludes: {
     '/articles/*': ['./src/app/articles/**/*.mdx'],
   },
+  async redirects() {
+    return [
+      { source: '/talks', destination: '/about', permanent: false },
+      { source: '/appearances', destination: '/about', permanent: false },
+      { source: '/uses', destination: '/recommendations', permanent: true },
+    ]
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.pdf$/,

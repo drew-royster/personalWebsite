@@ -8,16 +8,16 @@ import { formatDate } from '@/lib/formatDate'
 
 const capabilities = [
   {
-    title: 'Voice interfaces',
-    body: 'Voice is unforgiving. A little lag makes the whole thing feel dead. Bad interruption handling turns a smart model into a weird phone tree.',
-  },
-  {
     title: 'Agent runtime',
     body: 'The model call is usually the easy part. The harder bit is what it gets to know, what it can touch, and how you catch it when it drifts.',
   },
   {
     title: 'Tool workflows',
     body: "A model that can't touch the system is mostly a text box with confidence. The useful version calls tools, stays bounded, and leaves enough evidence to check.",
+  },
+  {
+    title: 'Voice interfaces',
+    body: 'Voice is unforgiving. A little lag makes the whole thing feel dead. Bad interruption handling turns a smart model into a weird phone tree.',
   },
   {
     title: 'Local systems',
@@ -99,6 +99,7 @@ function ImagePlate({ image, label, priority = false }) {
         alt=""
         sizes="(min-width: 1024px) 38rem, 100vw"
         className="etched-image absolute inset-0 h-full w-full object-cover opacity-80"
+        placeholder="blur"
         priority={priority}
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,28,26,0.1),rgba(0,0,0,0.42))]" />
@@ -168,14 +169,14 @@ export default async function Home() {
             <div className="relative mx-auto max-w-4xl">
               <div className="accent-rule mx-auto mb-5 h-px w-24" />
               <p className="small-label accent-kicker text-sm">
-                Drew Royster · Utah · frontier voice AI systems
+                Drew Royster · Utah · agents for real work
               </p>
               <h1 className="mt-4 font-display text-5xl leading-[0.92] text-cream sm:text-7xl lg:text-8xl">
-                I build frontier voice AI systems.
+                I build agents that do real work.
               </h1>
               <p className="mx-auto mt-7 max-w-2xl font-serif text-lg leading-8 text-cream/74">
-                Low-latency interfaces, local models, and agent workflows that
-                turn speech into action.
+                Voice interfaces, tool workflows, and local models that turn
+                intent into action.
               </p>
               <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-0 text-left">
                 <CommandBlock step="1" title="Find the frontier">
@@ -218,8 +219,14 @@ export default async function Home() {
       <Shell id="contact" className="mt-10">
         <div className="dossier-frame bg-black/40">
           <div className="border-cream/18 grid border-b lg:grid-cols-[0.72fr_1fr]">
-            <div className="p-4 sm:p-6">
+            <div className="flex flex-col justify-between gap-6 p-4 sm:p-6">
               <p className="small-label text-sm text-rust">Work records</p>
+              <div>
+                <p className="max-w-md font-serif text-lg leading-8 text-cream/74">
+                  Systems that survived contact with real work. Each record
+                  keeps the constraint that made it interesting.
+                </p>
+              </div>
             </div>
             <div className="border-cream/18 border-t lg:border-l lg:border-t-0">
               <ImagePlate image={machineHands} label="tools and machines" />

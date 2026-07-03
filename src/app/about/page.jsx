@@ -105,6 +105,20 @@ export default function About() {
                 drew.royster@gmail.com
               </SocialLink>
             </ul>
+            <div className="mt-8 border-t border-cream/18 pt-6">
+              <p className="small-label text-sm text-rust">Heard on</p>
+              <a
+                href="https://youtu.be/SxFGFsDRj6g?si=vK2buQCgf5uFqcJC"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 block text-sm font-medium text-cream/70 transition hover:text-cream"
+              >
+                Function Calling &amp; BAML — Shaolin AI Podcast
+                <span className="mt-1 block font-mono text-xs text-cream/42">
+                  Nov 4, 2024
+                </span>
+              </a>
+            </div>
           </aside>
         </div>
       </div>

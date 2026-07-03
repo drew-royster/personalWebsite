@@ -18,11 +18,10 @@ const lora = Lora({
 export const metadata = {
   title: {
     template: '%s - Drew Royster',
-    default:
-      'Drew Royster - Voice systems, tools, and agents.',
+    default: 'Drew Royster - Agents, tools, and voice systems.',
   },
   description:
-    'I build voice systems, tool workflows, and agents that survive contact with real work.',
+    'I build agents, tool workflows, and voice systems that survive contact with real work.',
   alternates: {
     types: {
       'application/rss+xml': `https://drewroyster.com/feed.xml`,

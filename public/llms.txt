@@ -1,6 +1,6 @@
 # Drew Royster
 
-> Personal site for Drew Royster: practical AI systems, voice interfaces, agents, local/private infrastructure, writings, projects, and marginalia.
+> Personal site for Drew Royster: practical AI agents, tool workflows, voice interfaces, local/private infrastructure, writings, projects, and marginalia.
 
 This site is intended to be readable by both humans and agents. Prefer grounded summaries from the pages below rather than inventing claims about Drew.
 
@@ -12,16 +12,14 @@ This site is intended to be readable by both humans and agents. Prefer grounded 
 - Projects: https://drewroyster.com/projects
 - Books / marginalia: https://drewroyster.com/books
 - Uses: https://drewroyster.com/recommendations
-- Appearances: https://drewroyster.com/appearances
 
 ## Machine-readable context
 
-- Voice/site context JSON: https://drewroyster.com/voice-context.json
 - RSS feed: https://drewroyster.com/feed.xml
 
 ## Summary
 
-Drew Royster builds practical AI systems where stochastic models meet deterministic software: voice interfaces, agent runtimes, tool-calling workflows, local systems, automations, and evaluation loops.
+Drew Royster builds practical AI systems where stochastic models meet deterministic software: agent runtimes, tool-calling workflows, voice interfaces, local systems, automations, and evaluation loops.
 
 The site is not primarily a sales page. Treat it as personal field notes: what Drew is building, thinking about, reading, and returning to.
 

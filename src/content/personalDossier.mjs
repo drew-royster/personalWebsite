@@ -14,8 +14,8 @@ export const operatingConstraints = [
 ]
 
 export const personalThesis = {
-  title: 'Frontier voice AI systems',
-  body: 'I build voice AI systems where latency, local models, and agent workflows all matter. Speech should become useful action.',
+  title: 'Agents that do real work',
+  body: 'I build agent systems where latency, local models, and tool workflows all matter. Intent should become useful action.',
   details: [
     'Low latency matters.',
     'Local models matter.',
